@@ -1,0 +1,89 @@
+{
+  "id": "what_we_do",
+  "name": "What We Do",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Intro plus focus-area cards (image + detail) that switch between areas",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "What We Do"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "An integrated berry system built for performance",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "panel_label": {
+          "config": {
+            "label": "Panel label",
+            "placeholder": "Focus Areas"
+          },
+          "type": "Text"
+        },
+        "areas": {
+          "config": {
+            "fields": {
+              "name": {
+                "config": {
+                  "label": "Name",
+                  "placeholder": "Farming"
+                },
+                "type": "Text"
+              },
+              "image": {
+                "config": {
+                  "label": "Image"
+                },
+                "type": "Image"
+              },
+              "title": {
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Integrated farming network",
+                  "single": "heading3"
+                },
+                "type": "StructuredText"
+              },
+              "description": {
+                "config": {
+                  "label": "Description",
+                  "multi": "paragraph"
+                },
+                "type": "StructuredText"
+              },
+              "link": {
+                "config": {
+                  "allowText": true,
+                  "label": "Button"
+                },
+                "type": "Link"
+              }
+            },
+            "label": "Focus areas"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

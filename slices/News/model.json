@@ -1,0 +1,32 @@
+{
+  "id": "news",
+  "name": "News",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Title row plus the 8 most recent News Articles (pulled automatically)",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "News"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "Recent developments across origins, operations & innovation.",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

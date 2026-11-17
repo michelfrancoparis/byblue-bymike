@@ -1,0 +1,52 @@
+{
+  "format": "custom",
+  "id": "news_article",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "title": {
+        "config": {
+          "label": "Title",
+          "placeholder": "Expanding our production platform in Peru",
+          "single": "heading3"
+        },
+        "type": "StructuredText"
+      },
+      "image": {
+        "config": {
+          "label": "Image"
+        },
+        "type": "Image"
+      },
+      "category": {
+        "config": {
+          "label": "Category",
+          "placeholder": "Production Update"
+        },
+        "type": "Text"
+      },
+      "date": {
+        "config": {
+          "label": "Date"
+        },
+        "type": "Date"
+      },
+      "link": {
+        "config": {
+          "allowTargetBlank": true,
+          "label": "External link",
+          "select": "web"
+        },
+        "type": "Link"
+      }
+    }
+  },
+  "label": "News Article",
+  "repeatable": true,
+  "status": true
+}

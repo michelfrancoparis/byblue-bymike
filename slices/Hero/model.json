@@ -1,0 +1,89 @@
+{
+  "description": "Full-screen hero image that becomes the center circle of the system section below",
+  "id": "hero",
+  "name": "Hero",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default variation",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "https://images.prismic.io/next-instant-start/N6lKoeTwp-eQKFNX_hero_screenshot.png?auto=format,compress",
+      "items": {},
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Led by blueberry expertise."
+          },
+          "type": "Text"
+        },
+        "headline": {
+          "config": {
+            "allowTargetBlank": true,
+            "label": "Headline",
+            "placeholder": "One berry system across every season.",
+            "single": "heading1"
+          },
+          "type": "StructuredText"
+        },
+        "background_image": {
+          "config": {
+            "label": "Hero image (also the center circle)"
+          },
+          "type": "Image"
+        },
+        "system_title": {
+          "config": {
+            "label": "System title",
+            "placeholder": "Building a future-ready and sustainable system.",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "left_label": {
+          "config": {
+            "label": "Left circle label",
+            "placeholder": "Genetics"
+          },
+          "type": "Text"
+        },
+        "left_image": {
+          "config": {
+            "label": "Left circle image"
+          },
+          "type": "Image"
+        },
+        "center_label": {
+          "config": {
+            "label": "Center circle label (uses the hero image)",
+            "placeholder": "Farming"
+          },
+          "type": "Text"
+        },
+        "right_label": {
+          "config": {
+            "label": "Right circle label",
+            "placeholder": "Market"
+          },
+          "type": "Text"
+        },
+        "right_image": {
+          "config": {
+            "label": "Right circle image"
+          },
+          "type": "Image"
+        },
+        "system_text": {
+          "config": {
+            "label": "System text",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        }
+      },
+      "version": "initial"
+    }
+  ]
+}

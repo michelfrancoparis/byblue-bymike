@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "gsap-core": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-core/SKILL.md",
+      "computedHash": "c4a01101d9e1aafbf4b49f75d74f9349790d8741981ba0237c990093863035a6"
+    },
+    "gsap-react": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-react/SKILL.md",
+      "computedHash": "7d3b52822681a4158e371f895c58fb7030ecaf33f585a534b7162f9e92c5d893"
+    },
+    "gsap-scrolltrigger": {
+      "source": "greensock/gsap-skills",
+      "sourceType": "github",
+      "skillPath": "skills/gsap-scrolltrigger/SKILL.md",
+      "computedHash": "1cdc5647693783cb7a662d84a5de434c88a051ed56b4d33597c9b5782b5973e6"
+    },
+    "react-three-fiber": {
+      "source": "hellohello/os",
+      "sourceType": "github",
+      "skillPath": "skills/react-three-fiber/SKILL.md",
+      "computedHash": "f14527d1eb42599330058fc75b3ee0e76c95095e8f8b81e8ae070458f4b2f152"
+    },
+    "website-checklist": {
+      "source": "hellohello/os",
+      "sourceType": "github",
+      "skillPath": "skills/website-checklist/SKILL.md",
+      "computedHash": "f69d9461b07489298dc4735445d289b43c554296d2519cfe05cabf04c762cf90"
+    },
+    "website-guidelines": {
+      "source": "hellohello/os",
+      "sourceType": "github",
+      "skillPath": "skills/website-guidelines/SKILL.md",
+      "computedHash": "37dc403bf4529197953bc03d37ca7dde3bc7b5a85df9fd118d513ac9d2cf1efe"
+    },
+    "website-setup": {
+      "source": "hellohello/os",
+      "sourceType": "github",
+      "skillPath": "skills/website-setup/SKILL.md",
+      "computedHash": "75be6c583961c2f1a56be5b39681a03a19050f40db7925e51b7be580c3d8305e"
+    }
+  }
+}

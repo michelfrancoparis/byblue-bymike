@@ -1,0 +1,135 @@
+{
+  "format": "custom",
+  "id": "footer",
+  "json": {
+    "Main": {
+      "contact_label": {
+        "config": {
+          "label": "Contact heading",
+          "placeholder": "Contact"
+        },
+        "type": "Text"
+      },
+      "address": {
+        "config": {
+          "label": "Address",
+          "multi": "paragraph"
+        },
+        "type": "StructuredText"
+      },
+      "phone": {
+        "config": {
+          "label": "Phone"
+        },
+        "type": "Text"
+      },
+      "email": {
+        "config": {
+          "label": "Email"
+        },
+        "type": "Text"
+      },
+      "navigation_label": {
+        "config": {
+          "label": "Navigation heading",
+          "placeholder": "Navigation"
+        },
+        "type": "Text"
+      },
+      "navigation": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "Label"
+              },
+              "type": "Text"
+            },
+            "link": {
+              "config": {
+                "label": "Link"
+              },
+              "type": "Link"
+            }
+          },
+          "label": "Navigation links"
+        },
+        "type": "Group"
+      },
+      "social_label": {
+        "config": {
+          "label": "Social heading",
+          "placeholder": "Social Media"
+        },
+        "type": "Text"
+      },
+      "social": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "Label"
+              },
+              "type": "Text"
+            },
+            "link": {
+              "config": {
+                "allowTargetBlank": true,
+                "label": "Link",
+                "select": "web"
+              },
+              "type": "Link"
+            }
+          },
+          "label": "Social links"
+        },
+        "type": "Group"
+      },
+      "copyright": {
+        "config": {
+          "label": "Copyright",
+          "placeholder": "© 2026, ByBlue. All rights reserved."
+        },
+        "type": "Text"
+      },
+      "legal": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "Label"
+              },
+              "type": "Text"
+            },
+            "link": {
+              "config": {
+                "label": "Link"
+              },
+              "type": "Link"
+            }
+          },
+          "label": "Legal links"
+        },
+        "type": "Group"
+      },
+      "credit_label": {
+        "config": {
+          "label": "Credit",
+          "placeholder": "Made by ++"
+        },
+        "type": "Text"
+      },
+      "credit_link": {
+        "config": {
+          "allowTargetBlank": true,
+          "label": "Credit link",
+          "select": "web"
+        },
+        "type": "Link"
+      }
+    }
+  },
+  "label": "Footer",
+  "repeatable": false,
+  "status": true
+}

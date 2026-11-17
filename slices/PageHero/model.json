@@ -1,0 +1,45 @@
+{
+  "id": "page_hero",
+  "name": "Page Hero",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Framed image hero for inner pages: eyebrow and title bottom-left, text bottom-right",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "image": {
+          "config": {
+            "label": "Image"
+          },
+          "type": "Image"
+        },
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Farming"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "Integrated network.",
+            "single": "heading1"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

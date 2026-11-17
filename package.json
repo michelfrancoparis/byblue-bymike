@@ -1,0 +1,49 @@
+{
+  "name": "byblue-bymike",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "oxlint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "prepare": "simple-git-hooks"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@prismicio/client": "^7.23.1",
+    "@prismicio/next": "^3.0.0",
+    "@prismicio/react": "^3.5.1",
+    "@react-three/drei": "^10.7.9",
+    "@react-three/fiber": "^9.8.2",
+    "cn": "^0.3.0",
+    "gsap": "^3.15.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.187.0",
+    "lint-staged": "^17.5.1",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0",
+    "simple-git-hooks": "^2.14.0",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged --concurrent false"
+  },
+  "lint-staged": {
+    "*": "oxfmt",
+    "*.{ts,tsx,js,jsx,mjs}": "oxlint --no-error-on-unmatched-pattern"
+  },
+  "packageManager": "pnpm@10.34.5"
+}

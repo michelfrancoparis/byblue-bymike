@@ -1,0 +1,45 @@
+{
+  "id": "closing",
+  "name": "Closing",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Full-bleed image closing statement with a button; repeats at the end of every page",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "image": {
+          "config": {
+            "label": "Image"
+          },
+          "type": "Image"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "One system. Global operations. Long-term vision.",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "text": {
+          "config": {
+            "label": "Text",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "link": {
+          "config": {
+            "allowText": true,
+            "label": "Button"
+          },
+          "type": "Link"
+        }
+      },
+      "version": ""
+    }
+  ]
+}
