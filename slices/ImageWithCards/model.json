@@ -1,0 +1,65 @@
+{
+  "id": "image_with_cards",
+  "name": "Image With Cards",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Centered title over a large image with glass cards along its bottom edge",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "ByBlue Peru"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "image": {
+          "config": {
+            "label": "Image"
+          },
+          "type": "Image"
+        },
+        "cards": {
+          "config": {
+            "fields": {
+              "icon": {
+                "config": {
+                  "label": "Icon (white SVG)"
+                },
+                "type": "Image"
+              },
+              "title": {
+                "config": {
+                  "label": "Title",
+                  "single": "heading3"
+                },
+                "type": "StructuredText"
+              },
+              "description": {
+                "config": {
+                  "label": "Description",
+                  "multi": "paragraph"
+                },
+                "type": "StructuredText"
+              }
+            },
+            "label": "Cards"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

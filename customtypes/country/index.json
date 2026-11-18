@@ -1,0 +1,52 @@
+{
+  "format": "custom",
+  "id": "country",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "config": {
+          "label": "Name",
+          "placeholder": "Peru"
+        },
+        "type": "Text"
+      },
+      "latitude": {
+        "config": {
+          "label": "Latitude",
+          "max": 90,
+          "min": -90,
+          "placeholder": "-9.2",
+          "step": 0.1
+        },
+        "type": "Number"
+      },
+      "longitude": {
+        "config": {
+          "label": "Longitude",
+          "max": 180,
+          "min": -180,
+          "placeholder": "-75",
+          "step": 0.1
+        },
+        "type": "Number"
+      },
+      "label_side": {
+        "config": {
+          "default_value": "right",
+          "label": "Label side on the globe",
+          "options": ["right", "left"]
+        },
+        "type": "Select"
+      }
+    }
+  },
+  "label": "Country",
+  "repeatable": true,
+  "status": true
+}

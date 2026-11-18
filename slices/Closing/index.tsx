@@ -26,12 +26,15 @@ const Closing = ({ slice }: ClosingProps) => {
           sizes="100vw"
           className="object-cover"
         />
+        {primary.darken_image && (
+          <div aria-hidden="true" className="absolute inset-0 bg-black/20" />
+        )}
 
         <PrismicRichText
           field={primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="font-display text-display-sm md:text-display relative px-6 text-center">
+              <h2 className="font-display text-display-sm md:text-display relative max-w-304 px-6 text-center">
                 {children}
               </h2>
             ),

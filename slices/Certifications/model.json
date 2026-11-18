@@ -1,0 +1,81 @@
+{
+  "id": "certifications",
+  "name": "Certifications",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Centered title; card with text, grouped certification tags and a button, next to an image",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Food Safety"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "intro": {
+          "config": {
+            "label": "Card text",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "groups": {
+          "config": {
+            "fields": {
+              "label": {
+                "config": {
+                  "label": "Group name",
+                  "placeholder": "Company"
+                },
+                "type": "Text"
+              },
+              "certifications": {
+                "config": {
+                  "fields": {
+                    "name": {
+                      "config": {
+                        "label": "Name",
+                        "placeholder": "GLOBAL G.A.P."
+                      },
+                      "type": "Text"
+                    }
+                  },
+                  "label": "Certifications"
+                },
+                "type": "Group"
+              }
+            },
+            "label": "Certification groups"
+          },
+          "type": "Group"
+        },
+        "link": {
+          "config": {
+            "allowText": true,
+            "label": "Button (e.g. a PDF)"
+          },
+          "type": "Link"
+        },
+        "image": {
+          "config": {
+            "label": "Image"
+          },
+          "type": "Image"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

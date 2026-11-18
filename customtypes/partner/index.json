@@ -1,0 +1,38 @@
+{
+  "format": "custom",
+  "id": "partner",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "config": {
+          "label": "Name",
+          "placeholder": "Inka's Berries"
+        },
+        "type": "Text"
+      },
+      "logo": {
+        "config": {
+          "label": "Logo (dark, transparent background)"
+        },
+        "type": "Image"
+      },
+      "website": {
+        "config": {
+          "allowTargetBlank": true,
+          "label": "Website",
+          "select": "web"
+        },
+        "type": "Link"
+      }
+    }
+  },
+  "label": "Partner",
+  "repeatable": true,
+  "status": true
+}

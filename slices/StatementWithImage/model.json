@@ -1,0 +1,44 @@
+{
+  "id": "statement_with_image",
+  "name": "Statement With Image",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Divider + eyebrow, big statement and small text on the left, image on the right",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Our Farming model"
+          },
+          "type": "Text"
+        },
+        "statement": {
+          "config": {
+            "label": "Statement",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "text": {
+          "config": {
+            "label": "Text",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "image": {
+          "config": {
+            "label": "Image"
+          },
+          "type": "Image"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "partners_services",
+  "name": "Partners And Services",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Centered title, a row of partner logos (picked from Partners) and feature cards with a button",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Services for Growers"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "partners": {
+          "config": {
+            "fields": {
+              "partner": {
+                "config": {
+                  "customtypes": [
+                    {
+                      "fields": ["name", "logo"],
+                      "id": "partner"
+                    }
+                  ],
+                  "label": "Partner",
+                  "select": "document"
+                },
+                "type": "Link"
+              }
+            },
+            "label": "Partner logos"
+          },
+          "type": "Group"
+        },
+        "cards": {
+          "config": {
+            "fields": {
+              "icon": {
+                "config": {
+                  "label": "Icon"
+                },
+                "type": "Image"
+              },
+              "title": {
+                "config": {
+                  "label": "Title",
+                  "single": "heading3"
+                },
+                "type": "StructuredText"
+              },
+              "text": {
+                "config": {
+                  "label": "Text",
+                  "multi": "paragraph"
+                },
+                "type": "StructuredText"
+              }
+            },
+            "label": "Cards"
+          },
+          "type": "Group"
+        },
+        "link": {
+          "config": {
+            "allowText": true,
+            "label": "Button"
+          },
+          "type": "Link"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

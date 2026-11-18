@@ -12,33 +12,35 @@ const variants = {
 }
 
 /**
- * Figma "--action-primary": round arrow icon + pill label, from a Prismic link
- * with text. Renders nothing when the link is empty.
+ * Figma "--action-primary": optional round arrow icon + pill label, from a
+ * Prismic link with text. Shows the label as plain text while the link has no
+ * destination yet; renders nothing without a label.
  */
 export function ActionLink({
   field,
   variant = 'dark',
+  withIcon = true,
   className,
 }: {
   field: LinkField
   variant?: keyof typeof variants
+  withIcon?: boolean
   className?: string
 }) {
-  if (!isFilled.link(field)) return null
+  if (!field.text) return null
 
-  return (
-    <PrismicNextLink
-      field={field}
-      className={cn('text-body flex items-center', className)}
-    >
-      <span
-        className={cn(
-          'flex size-12 items-center justify-center rounded-full',
-          variants[variant],
-        )}
-      >
-        <ArrowIcon className="size-5" />
-      </span>
+  const content = (
+    <>
+      {withIcon && (
+        <span
+          className={cn(
+            'flex size-12 items-center justify-center rounded-full',
+            variants[variant],
+          )}
+        >
+          <ArrowIcon className="size-5" />
+        </span>
+      )}
       <span
         className={cn(
           'rounded-full px-6 py-4.5 leading-none',
@@ -47,6 +49,15 @@ export function ActionLink({
       >
         {field.text}
       </span>
+    </>
+  )
+  const classes = cn('text-body flex items-center', className)
+
+  return isFilled.link(field) ? (
+    <PrismicNextLink field={field} className={classes}>
+      {content}
     </PrismicNextLink>
+  ) : (
+    <span className={classes}>{content}</span>
   )
 }

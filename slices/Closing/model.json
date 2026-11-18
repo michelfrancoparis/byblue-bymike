@@ -16,6 +16,15 @@
           },
           "type": "Image"
         },
+        "darken_image": {
+          "config": {
+            "default_value": false,
+            "label": "Darken image",
+            "placeholder_false": "No",
+            "placeholder_true": "Yes"
+          },
+          "type": "Boolean"
+        },
         "title": {
           "config": {
             "label": "Title",
