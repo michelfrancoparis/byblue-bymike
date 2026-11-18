@@ -38,6 +38,9 @@
             },
             "principles": {
               "type": "SharedSlice"
+            },
+            "title_with_image": {
+              "type": "SharedSlice"
             }
           }
         },

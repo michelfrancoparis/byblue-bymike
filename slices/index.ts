@@ -11,6 +11,7 @@ import PartnersAndServices from './PartnersAndServices'
 import Principles from './Principles'
 import StatementWithImage from './StatementWithImage'
 import Timeline from './Timeline'
+import TitleWithImage from './TitleWithImage'
 import WhatWeDo from './WhatWeDo'
 
 export const components = {
@@ -25,5 +26,6 @@ export const components = {
   principles: Principles,
   statement_with_image: StatementWithImage,
   timeline: Timeline,
+  title_with_image: TitleWithImage,
   what_we_do: WhatWeDo,
 }

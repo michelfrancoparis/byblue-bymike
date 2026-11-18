@@ -509,6 +509,7 @@ type PageDocumentDataSlicesSlice =
   | TimelineSlice
   | CertificationsSlice
   | PrinciplesSlice
+  | TitleWithImageSlice
 
 /**
  * Content for Page documents
@@ -1714,6 +1715,71 @@ export type TimelineSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *TitleWithImage → Default → Primary*
+ */
+export interface TitleWithImageSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *TitleWithImage → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Coordinated market execution
+   * - **API ID Path**: title_with_image.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *TitleWithImage → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_with_image.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Image field in *TitleWithImage → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_with_image.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for TitleWithImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TitleWithImageSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<TitleWithImageSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *TitleWithImage*
+ */
+type TitleWithImageSliceVariation = TitleWithImageSliceDefault
+
+/**
+ * TitleWithImage Shared Slice
+ *
+ * - **API ID**: `title_with_image`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TitleWithImageSlice = prismic.SharedSlice<
+  'title_with_image',
+  TitleWithImageSliceVariation
+>
+
+/**
  * Item in *What We Do → Default → Primary → Focus areas*
  */
 export interface WhatWeDoSliceDefaultPrimaryAreasItem {
@@ -1943,6 +2009,10 @@ declare module '@prismicio/client' {
       TimelineSliceDefaultPrimary,
       TimelineSliceVariation,
       TimelineSliceDefault,
+      TitleWithImageSlice,
+      TitleWithImageSliceDefaultPrimary,
+      TitleWithImageSliceVariation,
+      TitleWithImageSliceDefault,
       WhatWeDoSlice,
       WhatWeDoSliceDefaultPrimaryAreasItem,
       WhatWeDoSliceDefaultPrimary,
