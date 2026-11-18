@@ -17,6 +17,27 @@
             },
             "closing": {
               "type": "SharedSlice"
+            },
+            "statement_with_image": {
+              "type": "SharedSlice"
+            },
+            "image_with_cards": {
+              "type": "SharedSlice"
+            },
+            "origins_map": {
+              "type": "SharedSlice"
+            },
+            "partners_services": {
+              "type": "SharedSlice"
+            },
+            "timeline": {
+              "type": "SharedSlice"
+            },
+            "certifications": {
+              "type": "SharedSlice"
+            },
+            "principles": {
+              "type": "SharedSlice"
             }
           }
         },

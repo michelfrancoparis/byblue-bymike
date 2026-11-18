@@ -1,0 +1,59 @@
+{
+  "id": "principles",
+  "name": "Principles",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "The Way We Grow"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "cards": {
+          "config": {
+            "fields": {
+              "icon": {
+                "config": {
+                  "label": "Icon"
+                },
+                "type": "Image"
+              },
+              "text": {
+                "config": {
+                  "label": "Text",
+                  "single": "paragraph"
+                },
+                "type": "StructuredText"
+              }
+            },
+            "label": "Cards"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

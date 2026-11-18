@@ -70,6 +70,68 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>['id']]
 
 /**
+ * Content for Country documents
+ */
+interface CountryDocumentData {
+  /**
+   * Name field in *Country*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Peru
+   * - **API ID Path**: country.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Latitude field in *Country*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: -9.2
+   * - **API ID Path**: country.latitude
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  latitude: prismic.NumberField
+
+  /**
+   * Longitude field in *Country*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: -75
+   * - **API ID Path**: country.longitude
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  longitude: prismic.NumberField
+
+  /**
+   * Label side on the globe field in *Country*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: right
+   * - **API ID Path**: country.label_side
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  label_side: prismic.SelectField<'right' | 'left', 'filled'>
+}
+
+/**
+ * Country document from Prismic
+ *
+ * - **API ID**: `country`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CountryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<CountryDocumentData>, 'country', Lang>
+
+/**
  * Item in *Footer → Navigation links*
  */
 export interface FooterDocumentDataNavigationItem {
@@ -437,7 +499,16 @@ export type NewsArticleDocument<Lang extends string = string> =
     Lang
   >
 
-type PageDocumentDataSlicesSlice = PageHeroSlice | ClosingSlice
+type PageDocumentDataSlicesSlice =
+  | PageHeroSlice
+  | ClosingSlice
+  | StatementWithImageSlice
+  | ImageWithCardsSlice
+  | OriginsMapSlice
+  | PartnersServicesSlice
+  | TimelineSlice
+  | CertificationsSlice
+  | PrinciplesSlice
 
 /**
  * Content for Page documents
@@ -498,11 +569,202 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, 'page', Lang>
 
+/**
+ * Content for Partner documents
+ */
+interface PartnerDocumentData {
+  /**
+   * Name field in *Partner*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Inka's Berries
+   * - **API ID Path**: partner.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Logo (dark, transparent background) field in *Partner*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partner.logo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  logo: prismic.ImageField<never>
+
+  /**
+   * Website field in *Partner*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partner.website
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  website: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Partner document from Prismic
+ *
+ * - **API ID**: `partner`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PartnerDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<PartnerDocumentData>, 'partner', Lang>
+
 export type AllDocumentTypes =
+  | CountryDocument
   | FooterDocument
   | HomepageDocument
   | NewsArticleDocument
   | PageDocument
+  | PartnerDocument
+
+/**
+ * Item in *Certifications → Default → Primary → Certification groups → Certifications*
+ */
+export interface CertificationsSliceDefaultPrimaryGroupsCertificationsItem {
+  /**
+   * Name field in *Certifications → Default → Primary → Certification groups → Certifications*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: GLOBAL G.A.P.
+   * - **API ID Path**: certifications.default.primary.groups[].certifications[].name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+}
+
+/**
+ * Item in *Certifications → Default → Primary → Certification groups*
+ */
+export interface CertificationsSliceDefaultPrimaryGroupsItem {
+  /**
+   * Group name field in *Certifications → Default → Primary → Certification groups*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Company
+   * - **API ID Path**: certifications.default.primary.groups[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Certifications field in *Certifications → Default → Primary → Certification groups*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certifications.default.primary.groups[].certifications[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  certifications: prismic.NestedGroupField<
+    Simplify<CertificationsSliceDefaultPrimaryGroupsCertificationsItem>
+  >
+}
+
+/**
+ * Primary content in *Certifications → Default → Primary*
+ */
+export interface CertificationsSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Certifications → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Food Safety
+   * - **API ID Path**: certifications.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Certifications → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certifications.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Card text field in *Certifications → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certifications.default.primary.intro
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  intro: prismic.RichTextField
+
+  /**
+   * Certification groups field in *Certifications → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certifications.default.primary.groups[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  groups: prismic.GroupField<
+    Simplify<CertificationsSliceDefaultPrimaryGroupsItem>
+  >
+
+  /**
+   * Button (e.g. a PDF) field in *Certifications → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certifications.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+  /**
+   * Image field in *Certifications → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: certifications.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for Certifications Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Centered title; card with text, grouped certification tags and a button, next to an image
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CertificationsSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<CertificationsSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Certifications*
+ */
+type CertificationsSliceVariation = CertificationsSliceDefault
+
+/**
+ * Certifications Shared Slice
+ *
+ * - **API ID**: `certifications`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type CertificationsSlice = prismic.SharedSlice<
+  'certifications',
+  CertificationsSliceVariation
+>
 
 /**
  * Primary content in *Closing → Default → Primary*
@@ -517,6 +779,17 @@ export interface ClosingSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>
+
+  /**
+   * Darken image field in *Closing → Default → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: closing.default.primary.darken_image
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  darken_image: prismic.BooleanField
 
   /**
    * Title field in *Closing → Default → Primary*
@@ -709,6 +982,118 @@ type HeroSliceVariation = HeroSliceDefault
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>
 
 /**
+ * Item in *Image With Cards → Default → Primary → Cards*
+ */
+export interface ImageWithCardsSliceDefaultPrimaryCardsItem {
+  /**
+   * Icon (white SVG) field in *Image With Cards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_with_cards.default.primary.cards[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>
+
+  /**
+   * Title field in *Image With Cards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_with_cards.default.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Image With Cards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_with_cards.default.primary.cards[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *Image With Cards → Default → Primary*
+ */
+export interface ImageWithCardsSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Image With Cards → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: ByBlue Peru
+   * - **API ID Path**: image_with_cards.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Image With Cards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_with_cards.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Image field in *Image With Cards → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_with_cards.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Cards field in *Image With Cards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_with_cards.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<ImageWithCardsSliceDefaultPrimaryCardsItem>
+  >
+}
+
+/**
+ * Default variation for Image With Cards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Centered title over a large image with glass cards along its bottom edge
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ImageWithCardsSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ImageWithCardsSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Image With Cards*
+ */
+type ImageWithCardsSliceVariation = ImageWithCardsSliceDefault
+
+/**
+ * Image With Cards Shared Slice
+ *
+ * - **API ID**: `image_with_cards`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ImageWithCardsSlice = prismic.SharedSlice<
+  'image_with_cards',
+  ImageWithCardsSliceVariation
+>
+
+/**
  * Primary content in *News → Default → Primary*
  */
 export interface NewsSliceDefaultPrimary {
@@ -761,6 +1146,71 @@ type NewsSliceVariation = NewsSliceDefault
 export type NewsSlice = prismic.SharedSlice<'news', NewsSliceVariation>
 
 /**
+ * Primary content in *Origins Map → Default → Primary*
+ */
+export interface OriginsMapSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Origins Map → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Integrated Production Network
+   * - **API ID Path**: origins_map.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Origins Map → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Aligned across origins.
+   * - **API ID Path**: origins_map.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Origins Map → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: origins_map.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+}
+
+/**
+ * Default variation for Origins Map Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Title row plus an interactive 3D globe showing every Country document
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OriginsMapSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<OriginsMapSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Origins Map*
+ */
+type OriginsMapSliceVariation = OriginsMapSliceDefault
+
+/**
+ * Origins Map Shared Slice
+ *
+ * - **API ID**: `origins_map`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OriginsMapSlice = prismic.SharedSlice<
+  'origins_map',
+  OriginsMapSliceVariation
+>
+
+/**
  * Primary content in *Page Hero → Default → Primary*
  */
 export interface PageHeroSliceDefaultPrimary {
@@ -809,7 +1259,7 @@ export interface PageHeroSliceDefaultPrimary {
  * Default variation for Page Hero Slice
  *
  * - **API ID**: `default`
- * - **Description**: Default
+ * - **Description**: Framed image hero for inner pages: eyebrow and title bottom-left, text bottom-right
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type PageHeroSliceDefault = prismic.SharedSliceVariation<
@@ -833,6 +1283,434 @@ type PageHeroSliceVariation = PageHeroSliceDefault
 export type PageHeroSlice = prismic.SharedSlice<
   'page_hero',
   PageHeroSliceVariation
+>
+
+/**
+ * Item in *Partners And Services → Default → Primary → Partner logos*
+ */
+export interface PartnersServicesSliceDefaultPrimaryPartnersItem {
+  /**
+   * Partner field in *Partners And Services → Default → Primary → Partner logos*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.partners[].partner
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  partner: ContentRelationshipFieldWithData<
+    [{ fields: ['name', 'logo']; id: 'partner' }]
+  >
+}
+
+/**
+ * Item in *Partners And Services → Default → Primary → Cards*
+ */
+export interface PartnersServicesSliceDefaultPrimaryCardsItem {
+  /**
+   * Icon field in *Partners And Services → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.cards[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>
+
+  /**
+   * Title field in *Partners And Services → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Text field in *Partners And Services → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.cards[].text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField
+}
+
+/**
+ * Primary content in *Partners And Services → Default → Primary*
+ */
+export interface PartnersServicesSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Partners And Services → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Services for Growers
+   * - **API ID Path**: partners_services.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Partners And Services → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Partner logos field in *Partners And Services → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.partners[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  partners: prismic.GroupField<
+    Simplify<PartnersServicesSliceDefaultPrimaryPartnersItem>
+  >
+
+  /**
+   * Cards field in *Partners And Services → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<PartnersServicesSliceDefaultPrimaryCardsItem>
+  >
+
+  /**
+   * Button field in *Partners And Services → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_services.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+}
+
+/**
+ * Default variation for Partners And Services Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Centered title, a row of partner logos (picked from Partners) and feature cards with a button
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PartnersServicesSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<PartnersServicesSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Partners And Services*
+ */
+type PartnersServicesSliceVariation = PartnersServicesSliceDefault
+
+/**
+ * Partners And Services Shared Slice
+ *
+ * - **API ID**: `partners_services`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PartnersServicesSlice = prismic.SharedSlice<
+  'partners_services',
+  PartnersServicesSliceVariation
+>
+
+/**
+ * Item in *Principles → Default → Primary → Cards*
+ */
+export interface PrinciplesSliceDefaultPrimaryCardsItem {
+  /**
+   * Icon field in *Principles → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.default.primary.cards[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>
+
+  /**
+   * Text field in *Principles → Default → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.default.primary.cards[].text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField
+}
+
+/**
+ * Primary content in *Principles → Default → Primary*
+ */
+export interface PrinciplesSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Principles → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: The Way We Grow
+   * - **API ID Path**: principles.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Principles → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Principles → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Cards field in *Principles → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<Simplify<PrinciplesSliceDefaultPrimaryCardsItem>>
+}
+
+/**
+ * Default variation for Principles Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrinciplesSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<PrinciplesSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Principles*
+ */
+type PrinciplesSliceVariation = PrinciplesSliceDefault
+
+/**
+ * Principles Shared Slice
+ *
+ * - **API ID**: `principles`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrinciplesSlice = prismic.SharedSlice<
+  'principles',
+  PrinciplesSliceVariation
+>
+
+/**
+ * Primary content in *Statement With Image → Default → Primary*
+ */
+export interface StatementWithImageSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Statement With Image → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Our Farming model
+   * - **API ID Path**: statement_with_image.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Statement field in *Statement With Image → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: statement_with_image.default.primary.statement
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  statement: prismic.RichTextField
+
+  /**
+   * Text field in *Statement With Image → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: statement_with_image.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField
+
+  /**
+   * Image field in *Statement With Image → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: statement_with_image.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for Statement With Image Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Divider + eyebrow, big statement and small text on the left, image on the right
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StatementWithImageSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<StatementWithImageSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Statement With Image*
+ */
+type StatementWithImageSliceVariation = StatementWithImageSliceDefault
+
+/**
+ * Statement With Image Shared Slice
+ *
+ * - **API ID**: `statement_with_image`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type StatementWithImageSlice = prismic.SharedSlice<
+  'statement_with_image',
+  StatementWithImageSliceVariation
+>
+
+/**
+ * Item in *Timeline → Default → Primary → Milestones*
+ */
+export interface TimelineSliceDefaultPrimaryMilestonesItem {
+  /**
+   * Image field in *Timeline → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: timeline.default.primary.milestones[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Title field in *Timeline → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Foundation
+   * - **API ID Path**: timeline.default.primary.milestones[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Timeline → Default → Primary → Milestones*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: timeline.default.primary.milestones[].description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+}
+
+/**
+ * Primary content in *Timeline → Default → Primary*
+ */
+export interface TimelineSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Timeline → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Building the System
+   * - **API ID Path**: timeline.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Timeline → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: From expertise to global presence, Growing across regions and seasons.
+   * - **API ID Path**: timeline.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Autoplay interval (seconds) field in *Timeline → Default → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 6
+   * - **API ID Path**: timeline.default.primary.autoplay_interval
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  autoplay_interval: prismic.NumberField
+
+  /**
+   * Milestones field in *Timeline → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: timeline.default.primary.milestones[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  milestones: prismic.GroupField<
+    Simplify<TimelineSliceDefaultPrimaryMilestonesItem>
+  >
+}
+
+/**
+ * Default variation for Timeline Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Autoplaying milestone carousel with an expanded active card
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TimelineSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<TimelineSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Timeline*
+ */
+type TimelineSliceVariation = TimelineSliceDefault
+
+/**
+ * Timeline Shared Slice
+ *
+ * - **API ID**: `timeline`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TimelineSlice = prismic.SharedSlice<
+  'timeline',
+  TimelineSliceVariation
 >
 
 /**
@@ -996,6 +1874,8 @@ declare module '@prismicio/client' {
 
   namespace Content {
     export type {
+      CountryDocument,
+      CountryDocumentData,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataNavigationItem,
@@ -1009,7 +1889,15 @@ declare module '@prismicio/client' {
       PageDocument,
       PageDocumentData,
       PageDocumentDataSlicesSlice,
+      PartnerDocument,
+      PartnerDocumentData,
       AllDocumentTypes,
+      CertificationsSlice,
+      CertificationsSliceDefaultPrimaryGroupsCertificationsItem,
+      CertificationsSliceDefaultPrimaryGroupsItem,
+      CertificationsSliceDefaultPrimary,
+      CertificationsSliceVariation,
+      CertificationsSliceDefault,
       ClosingSlice,
       ClosingSliceDefaultPrimary,
       ClosingSliceVariation,
@@ -1018,14 +1906,43 @@ declare module '@prismicio/client' {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ImageWithCardsSlice,
+      ImageWithCardsSliceDefaultPrimaryCardsItem,
+      ImageWithCardsSliceDefaultPrimary,
+      ImageWithCardsSliceVariation,
+      ImageWithCardsSliceDefault,
       NewsSlice,
       NewsSliceDefaultPrimary,
       NewsSliceVariation,
       NewsSliceDefault,
+      OriginsMapSlice,
+      OriginsMapSliceDefaultPrimary,
+      OriginsMapSliceVariation,
+      OriginsMapSliceDefault,
       PageHeroSlice,
       PageHeroSliceDefaultPrimary,
       PageHeroSliceVariation,
       PageHeroSliceDefault,
+      PartnersServicesSlice,
+      PartnersServicesSliceDefaultPrimaryPartnersItem,
+      PartnersServicesSliceDefaultPrimaryCardsItem,
+      PartnersServicesSliceDefaultPrimary,
+      PartnersServicesSliceVariation,
+      PartnersServicesSliceDefault,
+      PrinciplesSlice,
+      PrinciplesSliceDefaultPrimaryCardsItem,
+      PrinciplesSliceDefaultPrimary,
+      PrinciplesSliceVariation,
+      PrinciplesSliceDefault,
+      StatementWithImageSlice,
+      StatementWithImageSliceDefaultPrimary,
+      StatementWithImageSliceVariation,
+      StatementWithImageSliceDefault,
+      TimelineSlice,
+      TimelineSliceDefaultPrimaryMilestonesItem,
+      TimelineSliceDefaultPrimary,
+      TimelineSliceVariation,
+      TimelineSliceDefault,
       WhatWeDoSlice,
       WhatWeDoSliceDefaultPrimaryAreasItem,
       WhatWeDoSliceDefaultPrimary,
