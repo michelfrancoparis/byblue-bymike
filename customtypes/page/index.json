@@ -41,6 +41,9 @@
             },
             "title_with_image": {
               "type": "SharedSlice"
+            },
+            "production_calendar": {
+              "type": "SharedSlice"
             }
           }
         },

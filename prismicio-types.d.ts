@@ -70,6 +70,42 @@ type ContentRelationshipFieldWithData<
 }[Exclude<TCustomType[number], string>['id']]
 
 /**
+ * Item in *Country → Harvest windows*
+ */
+export interface CountryDocumentDataHarvestWindowsItem {
+  /**
+   * Program field in *Country → Harvest windows*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Conventional
+   * - **API ID Path**: country.harvest_windows[].program
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  program: prismic.SelectField<'Conventional' | 'Organic', 'filled'>
+
+  /**
+   * Start month field in *Country → Harvest windows*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: country.harvest_windows[].start_month
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  start_month: prismic.SelectField
+
+  /**
+   * End month field in *Country → Harvest windows*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: country.harvest_windows[].end_month
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  end_month: prismic.SelectField
+}
+
+/**
  * Content for Country documents
  */
 interface CountryDocumentData {
@@ -117,6 +153,19 @@ interface CountryDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/select
    */
   label_side: prismic.SelectField<'right' | 'left', 'filled'>
+
+  /**
+   * Harvest windows field in *Country*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: country.harvest_windows[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  harvest_windows: prismic.GroupField<
+    Simplify<CountryDocumentDataHarvestWindowsItem>
+  >
 }
 
 /**
@@ -510,6 +559,7 @@ type PageDocumentDataSlicesSlice =
   | CertificationsSlice
   | PrinciplesSlice
   | TitleWithImageSlice
+  | ProductionCalendarSlice
 
 /**
  * Content for Page documents
@@ -1528,6 +1578,120 @@ export type PrinciplesSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *ProductionCalendar → Default → Primary → Countries (in order)*
+ */
+export interface ProductionCalendarSliceDefaultPrimaryCountriesItem {
+  /**
+   * Country field in *ProductionCalendar → Default → Primary → Countries (in order)*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_calendar.default.primary.countries[].country
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  country: ContentRelationshipFieldWithData<
+    [{ fields: ['name']; id: 'country' }]
+  >
+}
+
+/**
+ * Primary content in *ProductionCalendar → Default → Primary*
+ */
+export interface ProductionCalendarSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *ProductionCalendar → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Production Calendar
+   * - **API ID Path**: production_calendar.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *ProductionCalendar → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_calendar.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *ProductionCalendar → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_calendar.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Legend: active field in *ProductionCalendar → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Active harvest window
+   * - **API ID Path**: production_calendar.default.primary.active_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  active_label: prismic.KeyTextField
+
+  /**
+   * Legend: off-season field in *ProductionCalendar → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Off-season
+   * - **API ID Path**: production_calendar.default.primary.off_season_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  off_season_label: prismic.KeyTextField
+
+  /**
+   * Countries (in order) field in *ProductionCalendar → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: production_calendar.default.primary.countries[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  countries: prismic.GroupField<
+    Simplify<ProductionCalendarSliceDefaultPrimaryCountriesItem>
+  >
+}
+
+/**
+ * Default variation for ProductionCalendar Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProductionCalendarSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ProductionCalendarSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *ProductionCalendar*
+ */
+type ProductionCalendarSliceVariation = ProductionCalendarSliceDefault
+
+/**
+ * ProductionCalendar Shared Slice
+ *
+ * - **API ID**: `production_calendar`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProductionCalendarSlice = prismic.SharedSlice<
+  'production_calendar',
+  ProductionCalendarSliceVariation
+>
+
+/**
  * Primary content in *Statement With Image → Default → Primary*
  */
 export interface StatementWithImageSliceDefaultPrimary {
@@ -1942,6 +2106,7 @@ declare module '@prismicio/client' {
     export type {
       CountryDocument,
       CountryDocumentData,
+      CountryDocumentDataHarvestWindowsItem,
       FooterDocument,
       FooterDocumentData,
       FooterDocumentDataNavigationItem,
@@ -2000,6 +2165,11 @@ declare module '@prismicio/client' {
       PrinciplesSliceDefaultPrimary,
       PrinciplesSliceVariation,
       PrinciplesSliceDefault,
+      ProductionCalendarSlice,
+      ProductionCalendarSliceDefaultPrimaryCountriesItem,
+      ProductionCalendarSliceDefaultPrimary,
+      ProductionCalendarSliceVariation,
+      ProductionCalendarSliceDefault,
       StatementWithImageSlice,
       StatementWithImageSliceDefaultPrimary,
       StatementWithImageSliceVariation,

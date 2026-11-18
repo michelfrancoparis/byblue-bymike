@@ -9,6 +9,7 @@ import OriginsMap from './OriginsMap'
 import PageHero from './PageHero'
 import PartnersAndServices from './PartnersAndServices'
 import Principles from './Principles'
+import ProductionCalendar from './ProductionCalendar'
 import StatementWithImage from './StatementWithImage'
 import Timeline from './Timeline'
 import TitleWithImage from './TitleWithImage'
@@ -24,6 +25,7 @@ export const components = {
   page_hero: PageHero,
   partners_services: PartnersAndServices,
   principles: Principles,
+  production_calendar: ProductionCalendar,
   statement_with_image: StatementWithImage,
   timeline: Timeline,
   title_with_image: TitleWithImage,

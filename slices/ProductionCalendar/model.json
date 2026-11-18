@@ -1,0 +1,73 @@
+{
+  "id": "production_calendar",
+  "name": "ProductionCalendar",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Production Calendar"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "active_label": {
+          "config": {
+            "label": "Legend: active",
+            "placeholder": "Active harvest window"
+          },
+          "type": "Text"
+        },
+        "off_season_label": {
+          "config": {
+            "label": "Legend: off-season",
+            "placeholder": "Off-season"
+          },
+          "type": "Text"
+        },
+        "countries": {
+          "config": {
+            "fields": {
+              "country": {
+                "config": {
+                  "customtypes": [
+                    {
+                      "fields": ["name"],
+                      "id": "country"
+                    }
+                  ],
+                  "label": "Country",
+                  "select": "document"
+                },
+                "type": "Link"
+              }
+            },
+            "label": "Countries (in order)"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

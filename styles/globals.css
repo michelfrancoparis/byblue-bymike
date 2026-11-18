@@ -5,6 +5,7 @@
   --foreground: #161b6d; /* Blue — Deep Ocean */
 
   --primary: #a4d3f6; /* Light Blue — accent */
+  --primary-muted: #bfd5de; /* Light Blue Muted — off-season pills */
   --muted: #5e638f; /* Blue Muted — secondary text */
   --card: #ffffff; /* White — card surfaces */
   --lime: #e8ff7d; /* Electric Lime — label pills */
@@ -17,6 +18,7 @@
   --color-foreground: var(--foreground);
 
   --color-primary: var(--primary);
+  --color-primary-muted: var(--primary-muted);
   --color-muted: var(--muted);
   --color-card: var(--card);
   --color-lime: var(--lime);

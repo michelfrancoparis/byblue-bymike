@@ -43,6 +43,34 @@
           "options": ["right", "left"]
         },
         "type": "Select"
+      },
+      "harvest_windows": {
+        "config": {
+          "fields": {
+            "program": {
+              "config": {
+                "default_value": "Conventional",
+                "label": "Program",
+                "options": ["Conventional", "Organic"]
+              },
+              "type": "Select"
+            },
+            "start_month": {
+              "config": {
+                "label": "Start month"
+              },
+              "type": "Select"
+            },
+            "end_month": {
+              "config": {
+                "label": "End month"
+              },
+              "type": "Select"
+            }
+          },
+          "label": "Harvest windows"
+        },
+        "type": "Group"
       }
     }
   },
