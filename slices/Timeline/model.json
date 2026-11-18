@@ -1,0 +1,68 @@
+{
+  "id": "timeline",
+  "name": "Timeline",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Autoplaying milestone carousel with an expanded active card",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Building the System"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "placeholder": "From expertise to global presence, Growing across regions and seasons.",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "autoplay_interval": {
+          "config": {
+            "label": "Autoplay interval (seconds)",
+            "placeholder": "6"
+          },
+          "type": "Number"
+        },
+        "milestones": {
+          "config": {
+            "fields": {
+              "image": {
+                "config": {
+                  "label": "Image"
+                },
+                "type": "Image"
+              },
+              "title": {
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Foundation",
+                  "single": "heading3"
+                },
+                "type": "StructuredText"
+              },
+              "description": {
+                "config": {
+                  "label": "Description",
+                  "multi": "paragraph"
+                },
+                "type": "StructuredText"
+              }
+            },
+            "label": "Milestones"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

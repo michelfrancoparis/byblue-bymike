@@ -4,7 +4,10 @@ import { PrismicRichText, type SliceComponentProps } from '@prismicio/react'
 
 export type PageHeroProps = SliceComponentProps<Content.PageHeroSlice>
 
-/** Inner-page hero: framed full-screen image, title bottom-left, text bottom-right. */
+/**
+ * Inner-page hero. Content stays in Prismic so each page can use the same
+ * framed image composition with its own copy and photography.
+ */
 const PageHero = ({ slice }: PageHeroProps) => {
   const { primary } = slice
 
@@ -14,7 +17,7 @@ const PageHero = ({ slice }: PageHeroProps) => {
       data-slice-variation={slice.variation}
       className="h-svh min-h-150 p-2"
     >
-      <div className="bg-foreground text-background relative flex h-full flex-col justify-end gap-12 overflow-hidden rounded-4xl p-6 md:grid md:grid-cols-12 md:items-end md:gap-2 md:p-8 md:pr-0">
+      <div className="bg-foreground text-background relative h-full overflow-hidden rounded-4xl">
         <PrismicNextImage
           field={primary.image}
           fill
@@ -24,24 +27,31 @@ const PageHero = ({ slice }: PageHeroProps) => {
           className="object-cover"
         />
 
-        <div className="font-display relative flex flex-col gap-9 md:col-span-7">
-          {primary.eyebrow && (
-            <p className="text-shoulder">{primary.eyebrow}</p>
-          )}
-          <PrismicRichText
-            field={primary.title}
-            components={{
-              heading1: ({ children }) => (
-                <h1 className="text-display-sm md:text-display max-w-201">
-                  {children}
-                </h1>
-              ),
-            }}
-          />
-        </div>
+        <div
+          aria-hidden="true"
+          className="page-hero-overlay absolute inset-0"
+        />
 
-        <div className="text-h6 relative max-w-117 md:col-span-4 md:col-start-9 md:pb-1">
-          <PrismicRichText field={primary.description} />
+        <div className="grid-default relative h-full content-end p-6">
+          <div className="font-display col-span-4 flex flex-col gap-8 md:col-span-8">
+            {primary.eyebrow && (
+              <p className="text-shoulder">{primary.eyebrow}</p>
+            )}
+            <PrismicRichText
+              field={primary.title}
+              components={{
+                heading1: ({ children }) => (
+                  <h1 className="text-display-sm md:text-display max-w-225.5 text-balance">
+                    {children}
+                  </h1>
+                ),
+              }}
+            />
+          </div>
+
+          <div className="text-h6 col-span-4 max-w-80 self-end md:col-span-3 md:col-start-10 md:pb-1.5">
+            <PrismicRichText field={primary.description} />
+          </div>
         </div>
       </div>
     </section>
