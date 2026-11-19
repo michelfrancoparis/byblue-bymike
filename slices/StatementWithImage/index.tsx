@@ -37,7 +37,7 @@ const StatementWithImage = ({ slice }: StatementWithImageProps) => {
           </div>
         </div>
 
-        <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:h-156">
+        <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:min-h-156">
           <PrismicNextImage
             field={primary.image}
             fill

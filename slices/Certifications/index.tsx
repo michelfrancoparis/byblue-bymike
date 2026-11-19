@@ -31,7 +31,7 @@ const Certifications = ({ slice }: CertificationsProps) => {
       </div>
 
       <div className="grid-default mt-16 gap-y-2 md:mt-30">
-        <div className="bg-primary text-foreground col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-6 md:col-span-6 md:h-140.75">
+        <div className="bg-primary text-foreground col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-6 md:col-span-6 md:min-h-140.75">
           <div className="flex flex-col gap-10">
             <div className="text-lead-sm md:text-lead max-w-155">
               <PrismicRichText field={primary.intro} />
@@ -61,7 +61,7 @@ const Certifications = ({ slice }: CertificationsProps) => {
           <ActionLink field={primary.link} />
         </div>
 
-        <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:h-140.75">
+        <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:min-h-140.75">
           <PrismicNextImage
             field={primary.image}
             fill

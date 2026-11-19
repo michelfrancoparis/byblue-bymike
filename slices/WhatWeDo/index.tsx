@@ -50,7 +50,7 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
 
       {active && (
         <div className="grid-default mt-16">
-          <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:h-150">
+          <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:min-h-150">
             <PrismicNextImage
               field={active.image}
               fill
@@ -90,7 +90,7 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
             </ol>
           </div>
 
-          <div className="bg-primary col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-8 md:col-span-6 md:h-150">
+          <div className="bg-primary col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-8 md:col-span-6 md:min-h-150">
             {primary.panel_label && (
               <p className="font-display text-shoulder">
                 {primary.panel_label}

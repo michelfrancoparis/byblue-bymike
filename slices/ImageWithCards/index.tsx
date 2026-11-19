@@ -36,7 +36,7 @@ const ImageWithCards = ({ slice }: ImageWithCardsProps) => {
         />
       </div>
 
-      <div className="bg-muted relative mt-16 overflow-hidden rounded-4xl md:mt-24 md:h-162.5">
+      <div className="bg-muted relative mt-16 flex flex-col justify-end overflow-hidden rounded-4xl md:mt-24 md:min-h-162.5">
         <PrismicNextImage
           field={primary.image}
           fill
@@ -45,7 +45,7 @@ const ImageWithCards = ({ slice }: ImageWithCardsProps) => {
           className="object-cover"
         />
 
-        <ul className="text-card relative flex flex-col gap-3 p-3 pt-64 md:absolute md:inset-x-0 md:bottom-0 md:flex-row md:items-end md:pt-3">
+        <ul className="text-card relative flex flex-col gap-3 p-3 pt-64 lg:flex-row lg:items-end">
           {primary.cards.map((card, index) => {
             const isOpen = index === openIndex
             return (
@@ -53,7 +53,7 @@ const ImageWithCards = ({ slice }: ImageWithCardsProps) => {
                 key={index}
                 className={cn(
                   'flex flex-col gap-12 rounded-3xl bg-black/15 p-6 backdrop-blur-xl',
-                  isOpen ? 'md:w-131.25 md:shrink-0' : 'md:flex-1',
+                  isOpen ? 'lg:w-2/5 lg:shrink-0' : 'lg:min-w-0 lg:flex-1',
                 )}
               >
                 {isOpen && card.icon.url && (

@@ -61,7 +61,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
           ? slice.primary.cards.map((card, index) => (
               <li
                 key={index}
-                className="bg-primary col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-6 md:col-span-3 md:h-89"
+                className="bg-primary col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-6 md:col-span-6 md:min-h-89 lg:col-span-3"
               >
                 <div className="flex flex-col gap-12 md:gap-24">
                   {card.icon.url && (
