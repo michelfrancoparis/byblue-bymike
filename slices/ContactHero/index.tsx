@@ -23,7 +23,7 @@ const ContactHero = ({ slice }: ContactHeroProps) => {
       data-slice-variation={slice.variation}
       className="bg-primary flex min-h-svh p-2"
     >
-      <div className="bg-foreground text-card relative flex flex-1 flex-col justify-end gap-8 overflow-hidden rounded-4xl p-3 pt-32 lg:flex-row lg:items-end lg:justify-between">
+      <div className="bg-foreground text-card relative flex flex-1 flex-col justify-end gap-8 overflow-hidden rounded-4xl p-3 pt-32 xl:flex-row xl:items-end xl:justify-between">
         <PrismicNextImage
           field={primary.image}
           fill
@@ -37,7 +37,7 @@ const ContactHero = ({ slice }: ContactHeroProps) => {
           className="contact-hero-overlay absolute inset-0"
         />
 
-        <div className="relative flex max-w-150 flex-col gap-10 p-5 lg:pb-5">
+        <div className="relative flex max-w-150 flex-col gap-10 p-5">
           {primary.eyebrow && (
             <p className="font-display text-shoulder">{primary.eyebrow}</p>
           )}
@@ -58,7 +58,7 @@ const ContactHero = ({ slice }: ContactHeroProps) => {
 
         <form
           aria-label={asText(primary.title) || 'Contact form'}
-          className="photo-card-glass relative flex w-full flex-col gap-6 rounded-3xl p-6 md:p-8 lg:max-w-170 lg:shrink-0"
+          className="photo-card-glass relative flex w-full flex-col gap-6 rounded-3xl p-6 md:p-8 xl:max-w-170 xl:shrink-0"
         >
           <div className="grid grid-cols-2 gap-x-2 gap-y-5">
             {primary.fields.map((field, index) => {
