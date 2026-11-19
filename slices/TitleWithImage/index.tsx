@@ -15,7 +15,7 @@ const TitleWithImage = ({ slice }: TitleWithImageProps) => {
       data-slice-variation={slice.variation}
       className="container py-18"
     >
-      <div className="font-display flex flex-col items-center gap-12 text-center">
+      <div className="font-display flex flex-col items-start gap-6 md:items-center md:gap-12 md:text-center">
         {primary.eyebrow && (
           <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
         )}
@@ -23,13 +23,15 @@ const TitleWithImage = ({ slice }: TitleWithImageProps) => {
           field={primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="text-h1-sm md:text-h1 max-w-244">{children}</h2>
+              <h2 className="text-h1-sm md:text-h1 max-w-80 md:max-w-244">
+                {children}
+              </h2>
             ),
           }}
         />
       </div>
 
-      <div className="bg-muted relative mt-16 h-64 overflow-hidden rounded-4xl md:mt-24 md:h-100">
+      <div className="bg-muted relative mt-16 h-88.5 overflow-hidden rounded-3xl md:mt-24 md:h-100 md:rounded-4xl">
         <PrismicNextImage
           field={primary.image}
           fill

@@ -69,8 +69,8 @@ const Principles = ({ slice }: PrinciplesProps) => {
       <ul
         className={cn(
           'grid-default mt-24 gap-y-2',
-          // Mobile: the tall title cards slide sideways, one at a time (Figma).
-          withTitles &&
+          // Mobile: cards slide sideways, one at a time (Figma).
+          (withTitles || slice.variation === 'default') &&
             '-mx-global px-global mt-16 flex snap-x snap-mandatory scroll-px-2 scrollbar-none gap-2 overflow-x-auto md:mx-0 md:mt-24 md:grid md:overflow-visible md:px-0',
         )}
       >
@@ -126,7 +126,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
             slice.primary.cards.map((card, index) => (
               <li
                 key={index}
-                className="bg-primary col-span-4 flex flex-col gap-10 rounded-4xl py-8 pr-6 pl-8"
+                className="bg-primary col-span-4 flex min-h-56.75 w-70 shrink-0 snap-start flex-col justify-between gap-10 rounded-3xl p-6 md:min-h-0 md:w-auto md:justify-start md:rounded-4xl md:py-8 md:pr-6 md:pl-8"
               >
                 {card.icon.url && (
                   <PrismicImage
