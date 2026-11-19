@@ -1,0 +1,108 @@
+{
+  "id": "contact_hero",
+  "name": "ContactHero",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "image": {
+          "config": {
+            "label": "Background image"
+          },
+          "type": "Image"
+        },
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Get In Touch"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading1"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "fields": {
+          "config": {
+            "fields": {
+              "label": {
+                "config": {
+                  "label": "Label",
+                  "placeholder": "Full Name"
+                },
+                "type": "Text"
+              },
+              "placeholder": {
+                "config": {
+                  "label": "Placeholder",
+                  "placeholder": "Enter your full name"
+                },
+                "type": "Text"
+              },
+              "help_text": {
+                "config": {
+                  "label": "Help text"
+                },
+                "type": "Text"
+              },
+              "type": {
+                "config": {
+                  "default_value": "Text",
+                  "label": "Type",
+                  "options": ["Text", "Email", "Dropdown", "Message"]
+                },
+                "type": "Select"
+              },
+              "width": {
+                "config": {
+                  "default_value": "Half",
+                  "label": "Width",
+                  "options": ["Half", "Full"]
+                },
+                "type": "Select"
+              },
+              "options": {
+                "config": {
+                  "label": "Dropdown options (comma separated)",
+                  "placeholder": "Production, Sales, Partnership"
+                },
+                "type": "Text"
+              }
+            },
+            "label": "Form fields"
+          },
+          "type": "Group"
+        },
+        "privacy_note": {
+          "config": {
+            "label": "Privacy note"
+          },
+          "type": "Text"
+        },
+        "submit_label": {
+          "config": {
+            "label": "Button label",
+            "placeholder": "Send Message"
+          },
+          "type": "Text"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

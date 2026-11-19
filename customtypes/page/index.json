@@ -62,6 +62,12 @@
             },
             "variety_portfolio": {
               "type": "SharedSlice"
+            },
+            "contact_hero": {
+              "type": "SharedSlice"
+            },
+            "offices": {
+              "type": "SharedSlice"
             }
           }
         },

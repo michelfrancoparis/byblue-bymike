@@ -41,6 +41,13 @@
           "label": "Map image"
         },
         "type": "Image"
+      },
+      "tagline": {
+        "config": {
+          "label": "Tagline (Contact offices)",
+          "placeholder": "Where innovation meets the market"
+        },
+        "type": "Text"
       }
     }
   },

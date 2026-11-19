@@ -530,6 +530,17 @@ interface LocationDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   map: prismic.ImageField<never>
+
+  /**
+   * Tagline (Contact offices) field in *Location*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Where innovation meets the market
+   * - **API ID Path**: location.tagline
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tagline: prismic.KeyTextField
 }
 
 /**
@@ -720,6 +731,8 @@ type PageDocumentDataSlicesSlice =
   | PhotoCardsSlice
   | PhaseTimelineSlice
   | VarietyPortfolioSlice
+  | ContactHeroSlice
+  | OfficesSlice
 
 /**
  * Content for Page documents
@@ -1293,6 +1306,178 @@ type ClosingSliceVariation = ClosingSliceDefault
 export type ClosingSlice = prismic.SharedSlice<'closing', ClosingSliceVariation>
 
 /**
+ * Item in *ContactHero → Default → Primary → Form fields*
+ */
+export interface ContactHeroSliceDefaultPrimaryFieldsItem {
+  /**
+   * Label field in *ContactHero → Default → Primary → Form fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Full Name
+   * - **API ID Path**: contact_hero.default.primary.fields[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Placeholder field in *ContactHero → Default → Primary → Form fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Enter your full name
+   * - **API ID Path**: contact_hero.default.primary.fields[].placeholder
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  placeholder: prismic.KeyTextField
+
+  /**
+   * Help text field in *ContactHero → Default → Primary → Form fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.fields[].help_text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  help_text: prismic.KeyTextField
+
+  /**
+   * Type field in *ContactHero → Default → Primary → Form fields*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Text
+   * - **API ID Path**: contact_hero.default.primary.fields[].type
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  type: prismic.SelectField<'Text' | 'Email' | 'Dropdown' | 'Message', 'filled'>
+
+  /**
+   * Width field in *ContactHero → Default → Primary → Form fields*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Half
+   * - **API ID Path**: contact_hero.default.primary.fields[].width
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  width: prismic.SelectField<'Half' | 'Full', 'filled'>
+
+  /**
+   * Dropdown options (comma separated) field in *ContactHero → Default → Primary → Form fields*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Production, Sales, Partnership
+   * - **API ID Path**: contact_hero.default.primary.fields[].options
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  options: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *ContactHero → Default → Primary*
+ */
+export interface ContactHeroSliceDefaultPrimary {
+  /**
+   * Background image field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Eyebrow field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Get In Touch
+   * - **API ID Path**: contact_hero.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Form fields field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.fields[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  fields: prismic.GroupField<Simplify<ContactHeroSliceDefaultPrimaryFieldsItem>>
+
+  /**
+   * Privacy note field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_hero.default.primary.privacy_note
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  privacy_note: prismic.KeyTextField
+
+  /**
+   * Button label field in *ContactHero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Send Message
+   * - **API ID Path**: contact_hero.default.primary.submit_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  submit_label: prismic.KeyTextField
+}
+
+/**
+ * Default variation for ContactHero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactHeroSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<ContactHeroSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *ContactHero*
+ */
+type ContactHeroSliceVariation = ContactHeroSliceDefault
+
+/**
+ * ContactHero Shared Slice
+ *
+ * - **API ID**: `contact_hero`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ContactHeroSlice = prismic.SharedSlice<
+  'contact_hero',
+  ContactHeroSliceVariation
+>
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -1671,6 +1856,85 @@ type NewsSliceVariation = NewsSliceDefault
  * - **Documentation**: https://prismic.io/docs/slices
  */
 export type NewsSlice = prismic.SharedSlice<'news', NewsSliceVariation>
+
+/**
+ * Item in *Offices → Default → Primary → Offices (in order)*
+ */
+export interface OfficesSliceDefaultPrimaryOfficesItem {
+  /**
+   * Location field in *Offices → Default → Primary → Offices (in order)*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offices.default.primary.offices[].location
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  location: ContentRelationshipFieldWithData<
+    [{ fields: ['name', 'tagline', 'address', 'photo']; id: 'location' }]
+  >
+}
+
+/**
+ * Primary content in *Offices → Default → Primary*
+ */
+export interface OfficesSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Offices → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Our Offices
+   * - **API ID Path**: offices.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Offices → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offices.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Offices (in order) field in *Offices → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: offices.default.primary.offices[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  offices: prismic.GroupField<Simplify<OfficesSliceDefaultPrimaryOfficesItem>>
+}
+
+/**
+ * Default variation for Offices Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OfficesSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<OfficesSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Offices*
+ */
+type OfficesSliceVariation = OfficesSliceDefault
+
+/**
+ * Offices Shared Slice
+ *
+ * - **API ID**: `offices`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type OfficesSlice = prismic.SharedSlice<'offices', OfficesSliceVariation>
 
 /**
  * Primary content in *Origins Map → Default → Primary*
@@ -3327,6 +3591,11 @@ declare module '@prismicio/client' {
       ClosingSliceDefaultPrimary,
       ClosingSliceVariation,
       ClosingSliceDefault,
+      ContactHeroSlice,
+      ContactHeroSliceDefaultPrimaryFieldsItem,
+      ContactHeroSliceDefaultPrimary,
+      ContactHeroSliceVariation,
+      ContactHeroSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
@@ -3345,6 +3614,11 @@ declare module '@prismicio/client' {
       NewsSliceDefaultPrimary,
       NewsSliceVariation,
       NewsSliceDefault,
+      OfficesSlice,
+      OfficesSliceDefaultPrimaryOfficesItem,
+      OfficesSliceDefaultPrimary,
+      OfficesSliceVariation,
+      OfficesSliceDefault,
       OriginsMapSlice,
       OriginsMapSliceDefaultPrimary,
       OriginsMapSliceVariation,

@@ -1,0 +1,52 @@
+{
+  "id": "offices",
+  "name": "Offices",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Our Offices"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "offices": {
+          "config": {
+            "fields": {
+              "location": {
+                "config": {
+                  "customtypes": [
+                    {
+                      "fields": ["name", "tagline", "address", "photo"],
+                      "id": "location"
+                    }
+                  ],
+                  "label": "Location",
+                  "select": "document"
+                },
+                "type": "Link"
+              }
+            },
+            "label": "Offices (in order)"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

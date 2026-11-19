@@ -243,3 +243,11 @@
     grid-auto-columns: calc((100% - 1rem) / 3);
   }
 }
+
+/* Contact hero: Figma — darker bottom-left corner for the intro text,
+   plus a 20% black wash over the photo. */
+@utility contact-hero-overlay {
+  background:
+    linear-gradient(22deg, rgb(0 0 0 / 50%) 8%, transparent 47%),
+    rgb(0 0 0 / 20%);
+}

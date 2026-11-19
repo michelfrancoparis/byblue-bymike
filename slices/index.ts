@@ -2,10 +2,12 @@
 
 import Certifications from './Certifications'
 import Closing from './Closing'
+import ContactHero from './ContactHero'
 import Hero from './Hero'
 import ImageWithCards from './ImageWithCards'
 import Locations from './Locations'
 import News from './News'
+import Offices from './Offices'
 import OriginsMap from './OriginsMap'
 import PageHero from './PageHero'
 import PartnersAndServices from './PartnersAndServices'
@@ -24,10 +26,12 @@ import WhatWeDo from './WhatWeDo'
 export const components = {
   certifications: Certifications,
   closing: Closing,
+  contact_hero: ContactHero,
   hero: Hero,
   image_with_cards: ImageWithCards,
   locations: Locations,
   news: News,
+  offices: Offices,
   origins_map: OriginsMap,
   page_hero: PageHero,
   partners_services: PartnersAndServices,
