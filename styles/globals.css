@@ -208,3 +208,19 @@
   box-shadow: inset 0 0 0.0835625rem rgb(255 255 255 / 50%);
   backdrop-filter: blur(1.25rem);
 }
+
+/* Greenhouse silhouette (Figma mask, Innovation "Breeding Program"). */
+@utility mask-greenhouse {
+  mask-image: url('/masks/greenhouse.svg');
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+/* Photo card caption: Figma glass — white 10% over black 15%, blurred. */
+@utility photo-card-glass {
+  background:
+    linear-gradient(rgb(255 255 255 / 10%), rgb(255 255 255 / 10%)),
+    rgb(0 0 0 / 15%);
+  box-shadow: inset 0 0 0.0835625rem rgb(255 255 255 / 50%);
+  backdrop-filter: blur(1.25rem);
+}

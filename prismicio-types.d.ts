@@ -716,6 +716,8 @@ type PageDocumentDataSlicesSlice =
   | ProductionCalendarSlice
   | TeamSlice
   | LocationsSlice
+  | SplitTitleImageSlice
+  | PhotoCardsSlice
 
 /**
  * Content for Page documents
@@ -1786,6 +1788,116 @@ export type PartnersServicesSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *PhotoCards → Default → Primary → Cards*
+ */
+export interface PhotoCardsSliceDefaultPrimaryCardsItem {
+  /**
+   * Image field in *PhotoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_cards.default.primary.cards[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Title field in *PhotoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Rotterdam, Netherlands.
+   * - **API ID Path**: photo_cards.default.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Text field in *PhotoCards → Default → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_cards.default.primary.cards[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *PhotoCards → Default → Primary*
+ */
+export interface PhotoCardsSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *PhotoCards → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: R&D Locations
+   * - **API ID Path**: photo_cards.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *PhotoCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_cards.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *PhotoCards → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_cards.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Cards field in *PhotoCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_cards.default.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<Simplify<PhotoCardsSliceDefaultPrimaryCardsItem>>
+}
+
+/**
+ * Default variation for PhotoCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PhotoCardsSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<PhotoCardsSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *PhotoCards*
+ */
+type PhotoCardsSliceVariation = PhotoCardsSliceDefault
+
+/**
+ * PhotoCards Shared Slice
+ *
+ * - **API ID**: `photo_cards`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PhotoCardsSlice = prismic.SharedSlice<
+  'photo_cards',
+  PhotoCardsSliceVariation
+>
+
+/**
  * Item in *Principles → Default → Primary → Cards*
  */
 export interface PrinciplesSliceDefaultPrimaryCardsItem {
@@ -2094,6 +2206,81 @@ type ProductionCalendarSliceVariation = ProductionCalendarSliceDefault
 export type ProductionCalendarSlice = prismic.SharedSlice<
   'production_calendar',
   ProductionCalendarSliceVariation
+>
+
+/**
+ * Primary content in *SplitTitleImage → Default → Primary*
+ */
+export interface SplitTitleImageSliceDefaultPrimary {
+  /**
+   * Title, left word field in *SplitTitleImage → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Breeding
+   * - **API ID Path**: split_title_image.default.primary.title_left
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title_left: prismic.KeyTextField
+
+  /**
+   * Title, right word field in *SplitTitleImage → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Program
+   * - **API ID Path**: split_title_image.default.primary.title_right
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title_right: prismic.KeyTextField
+
+  /**
+   * Image (cut to the greenhouse shape) field in *SplitTitleImage → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_title_image.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Description field in *SplitTitleImage → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: split_title_image.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+}
+
+/**
+ * Default variation for SplitTitleImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SplitTitleImageSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<SplitTitleImageSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *SplitTitleImage*
+ */
+type SplitTitleImageSliceVariation = SplitTitleImageSliceDefault
+
+/**
+ * SplitTitleImage Shared Slice
+ *
+ * - **API ID**: `split_title_image`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SplitTitleImageSlice = prismic.SharedSlice<
+  'split_title_image',
+  SplitTitleImageSliceVariation
 >
 
 /**
@@ -2666,6 +2853,11 @@ declare module '@prismicio/client' {
       PartnersServicesSliceDefaultPrimary,
       PartnersServicesSliceVariation,
       PartnersServicesSliceDefault,
+      PhotoCardsSlice,
+      PhotoCardsSliceDefaultPrimaryCardsItem,
+      PhotoCardsSliceDefaultPrimary,
+      PhotoCardsSliceVariation,
+      PhotoCardsSliceDefault,
       PrinciplesSlice,
       PrinciplesSliceDefaultPrimaryCardsItem,
       PrinciplesSliceDefaultPrimary,
@@ -2679,6 +2871,10 @@ declare module '@prismicio/client' {
       ProductionCalendarSliceDefaultPrimary,
       ProductionCalendarSliceVariation,
       ProductionCalendarSliceDefault,
+      SplitTitleImageSlice,
+      SplitTitleImageSliceDefaultPrimary,
+      SplitTitleImageSliceVariation,
+      SplitTitleImageSliceDefault,
       StatementWithImageSlice,
       StatementWithImageSliceDefaultPrimary,
       StatementWithImageSliceVariation,

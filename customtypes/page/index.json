@@ -50,6 +50,12 @@
             },
             "locations": {
               "type": "SharedSlice"
+            },
+            "split_title_image": {
+              "type": "SharedSlice"
+            },
+            "photo_cards": {
+              "type": "SharedSlice"
             }
           }
         },

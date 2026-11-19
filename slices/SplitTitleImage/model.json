@@ -1,0 +1,44 @@
+{
+  "id": "split_title_image",
+  "name": "SplitTitleImage",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "title_left": {
+          "config": {
+            "label": "Title, left word",
+            "placeholder": "Breeding"
+          },
+          "type": "Text"
+        },
+        "title_right": {
+          "config": {
+            "label": "Title, right word",
+            "placeholder": "Program"
+          },
+          "type": "Text"
+        },
+        "image": {
+          "config": {
+            "label": "Image (cut to the greenhouse shape)"
+          },
+          "type": "Image"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

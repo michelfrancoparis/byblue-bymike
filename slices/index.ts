@@ -9,8 +9,10 @@ import News from './News'
 import OriginsMap from './OriginsMap'
 import PageHero from './PageHero'
 import PartnersAndServices from './PartnersAndServices'
+import PhotoCards from './PhotoCards'
 import Principles from './Principles'
 import ProductionCalendar from './ProductionCalendar'
+import SplitTitleImage from './SplitTitleImage'
 import StatementWithImage from './StatementWithImage'
 import Team from './Team'
 import Timeline from './Timeline'
@@ -27,8 +29,10 @@ export const components = {
   origins_map: OriginsMap,
   page_hero: PageHero,
   partners_services: PartnersAndServices,
+  photo_cards: PhotoCards,
   principles: Principles,
   production_calendar: ProductionCalendar,
+  split_title_image: SplitTitleImage,
   statement_with_image: StatementWithImage,
   team: Team,
   timeline: Timeline,
