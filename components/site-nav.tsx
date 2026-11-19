@@ -254,7 +254,7 @@ function MenuLink({
   onNavigate: () => void
 }) {
   const className =
-    'font-display text-h2-sm flex items-center gap-2 py-4 leading-none'
+    'font-display text-h3 flex items-center gap-2 py-4 leading-none'
   const content = (
     <>
       <span

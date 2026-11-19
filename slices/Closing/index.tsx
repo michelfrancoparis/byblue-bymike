@@ -18,7 +18,7 @@ const Closing = ({ slice }: ClosingProps) => {
       data-slice-variation={slice.variation}
       className="bg-primary h-svh min-h-150 p-2"
     >
-      <div className="bg-foreground text-background relative flex h-full flex-col items-center justify-center overflow-hidden rounded-4xl">
+      <div className="bg-foreground text-background relative flex h-full flex-col items-start justify-start gap-6 overflow-hidden rounded-4xl px-3 py-8 md:items-center md:justify-center md:gap-0 md:p-0">
         <PrismicNextImage
           field={primary.image}
           fill
@@ -34,15 +34,15 @@ const Closing = ({ slice }: ClosingProps) => {
           field={primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="font-display text-display-sm md:text-display relative max-w-344 px-6 text-center md:px-0">
+              <h2 className="font-display text-display-sm md:text-display relative max-w-344 md:text-center">
                 {children}
               </h2>
             ),
           }}
         />
 
-        <div className="relative flex flex-col items-start gap-8 self-stretch p-6 md:absolute md:right-0 md:bottom-0 md:self-auto">
-          <div className="text-h6 max-w-117">
+        <div className="relative flex flex-col items-start gap-8 md:absolute md:right-0 md:bottom-0 md:p-6">
+          <div className="font-display text-h5-sm md:text-h6 max-w-117 md:font-sans">
             <PrismicRichText field={primary.text} />
           </div>
           <ActionLink field={primary.link} variant="light" />

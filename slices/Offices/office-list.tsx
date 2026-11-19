@@ -48,7 +48,9 @@ export function OfficeList({
                     {office.tagline}
                   </span>
                 )}
-                <span className="font-display text-h5">{office.name}</span>
+                <span className="font-display text-h5-sm md:text-h5">
+                  {office.name}
+                </span>
                 <span
                   className={cn(
                     'text-body',

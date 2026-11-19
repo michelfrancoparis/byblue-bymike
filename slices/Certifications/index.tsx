@@ -17,7 +17,9 @@ const Certifications = ({ slice }: CertificationsProps) => {
       className="container pt-18 pb-24"
     >
       <div className="font-display flex flex-col items-center gap-12 text-center">
-        {primary.eyebrow && <p className="text-shoulder">{primary.eyebrow}</p>}
+        {primary.eyebrow && (
+          <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
+        )}
         <PrismicRichText
           field={primary.title}
           components={{

@@ -15,7 +15,9 @@ const Timeline = ({ slice }: TimelineProps) => {
       className="overflow-hidden pt-32 pb-32"
     >
       <div className="font-display container flex flex-col items-center gap-12 text-center">
-        {primary.eyebrow && <p className="text-shoulder">{primary.eyebrow}</p>}
+        {primary.eyebrow && (
+          <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
+        )}
         <PrismicRichText
           field={primary.title}
           components={{

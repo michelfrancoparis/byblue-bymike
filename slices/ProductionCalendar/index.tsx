@@ -52,7 +52,7 @@ const ProductionCalendar = async ({ slice }: ProductionCalendarProps) => {
       <div className="divider origin-top scale-y-50" />
       <div className="grid-default mt-4 gap-y-12">
         {primary.eyebrow && (
-          <p className="font-display text-shoulder col-span-4 md:col-span-6">
+          <p className="font-display text-shoulder-sm md:text-shoulder col-span-4 md:col-span-6">
             {primary.eyebrow}
           </p>
         )}
@@ -67,7 +67,7 @@ const ProductionCalendar = async ({ slice }: ProductionCalendarProps) => {
               ),
             }}
           />
-          <div className="text-h6 text-muted max-w-152">
+          <div className="text-body md:text-h6 text-muted max-w-152">
             <PrismicRichText field={primary.description} />
           </div>
         </div>

@@ -20,12 +20,14 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container pt-34 pb-24"
+      className="container pt-8 pb-16 md:pt-34 md:pb-24"
     >
-      <div className="flex flex-col items-center gap-8 text-center">
-        <div className="font-display flex flex-col items-center gap-12">
+      <div className="flex flex-col items-start gap-4 md:items-center md:gap-8 md:text-center">
+        <div className="font-display flex flex-col items-start gap-6 md:items-center md:gap-12">
           {primary.eyebrow && (
-            <p className="text-shoulder">{primary.eyebrow}</p>
+            <p className="text-shoulder-sm md:text-shoulder">
+              {primary.eyebrow}
+            </p>
           )}
           <PrismicRichText
             field={primary.title}
@@ -42,15 +44,17 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
           field={primary.description}
           components={{
             paragraph: ({ children }) => (
-              <p className="text-h6 text-muted max-w-176">{children}</p>
+              <p className="text-body md:text-h6 text-muted max-w-176">
+                {children}
+              </p>
             ),
           }}
         />
       </div>
 
       {active && (
-        <div className="grid-default mt-16">
-          <div className="bg-muted relative col-span-4 aspect-square overflow-hidden rounded-4xl md:col-span-6 md:aspect-auto md:min-h-150">
+        <div className="grid-default mt-16 gap-y-2">
+          <div className="bg-muted relative col-span-4 aspect-6/5 overflow-hidden rounded-3xl md:col-span-6 md:aspect-auto md:min-h-150 md:rounded-4xl">
             <PrismicNextImage
               field={active.image}
               fill
@@ -65,7 +69,7 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
 
             <ol
               aria-label="Focus areas"
-              className="text-card absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-full bg-black/15 px-3 py-2 backdrop-blur-md"
+              className="text-card absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-full bg-black/15 px-3 py-2 backdrop-blur-md md:bottom-8"
             >
               {primary.areas.map((area, index) => {
                 const isActive = index === activeIndex
@@ -81,7 +85,12 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
                     <span className="flex size-6 items-center justify-center rounded-full border border-current text-xs font-semibold">
                       {index + 1}
                     </span>
-                    <span className={cn('text-body', !isActive && 'sr-only')}>
+                    <span
+                      className={cn(
+                        'text-body-sm md:text-body',
+                        !isActive && 'sr-only',
+                      )}
+                    >
                       {area.name}
                     </span>
                   </li>
@@ -90,15 +99,15 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
             </ol>
           </div>
 
-          <div className="bg-primary col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-8 md:col-span-6 md:min-h-150">
+          <div className="bg-primary col-span-4 flex flex-col justify-between gap-6 rounded-3xl px-4 pt-4 pb-6 md:col-span-6 md:min-h-150 md:gap-12 md:rounded-4xl md:p-8">
             {primary.panel_label && (
-              <p className="font-display text-shoulder">
+              <p className="font-display text-shoulder-sm md:text-shoulder">
                 {primary.panel_label}
               </p>
             )}
 
-            <div className="flex flex-col items-start gap-12">
-              <div className="flex max-w-161 flex-col gap-6">
+            <div className="flex flex-col items-start gap-6 md:gap-12">
+              <div className="flex max-w-161 flex-col gap-4 md:gap-6">
                 <PrismicRichText
                   field={active.title}
                   components={{
@@ -109,7 +118,7 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
                     ),
                   }}
                 />
-                <div className="text-body text-muted flex max-w-99 flex-col gap-5">
+                <div className="text-body-sm md:text-body text-muted flex max-w-99 flex-col gap-5">
                   <PrismicRichText field={active.description} />
                 </div>
               </div>

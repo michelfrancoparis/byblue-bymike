@@ -32,27 +32,36 @@
   --text-display: 7.5rem; /* Display 120 */
   --text-display--line-height: 0.9;
   --text-display--letter-spacing: -0.03em;
-  --text-display-sm: 3rem; /* Display on mobile — provisional, no mobile frame yet */
-  --text-display-sm--line-height: 0.9;
+  --text-display-sm: 2.5rem; /* Mobile/Display 40 */
+  --text-display-sm--line-height: 1.05;
   --text-display-sm--letter-spacing: -0.03em;
   --text-h1: 4.25rem; /* H1 68 */
   --text-h1--line-height: 1;
   --text-h1--letter-spacing: -0.03em;
-  --text-h1-sm: 2.5rem; /* H1 on mobile — provisional, no mobile frame yet */
-  --text-h1-sm--line-height: 1;
-  --text-h1-sm--letter-spacing: -0.03em;
+  --text-h1-sm: 1.375rem; /* Mobile/H3 22 — section titles on mobile */
+  --text-h1-sm--line-height: 1.2;
+  --text-h1-sm--letter-spacing: -0.01em;
   --text-h2: 3rem; /* H2 48 */
   --text-h2--line-height: 1;
   --text-h2--letter-spacing: -0.03em;
-  --text-h2-sm: 2rem; /* H2 on mobile — provisional, no mobile frame yet */
-  --text-h2-sm--line-height: 1;
-  --text-h2-sm--letter-spacing: -0.03em;
+  --text-h2-sm: 1.375rem; /* Mobile/H3 22 — section titles on mobile */
+  --text-h2-sm--line-height: 1.2;
+  --text-h2-sm--letter-spacing: -0.01em;
+  --text-h3: 2rem; /* H3 32 — card and menu titles */
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.03em;
   --text-h4: 1.75rem; /* H4 28 */
   --text-h4--line-height: 1.2;
   --text-h4--letter-spacing: -0.02em;
+  --text-h5-sm: 1.125rem; /* Mobile/H5 18 */
+  --text-h5-sm--line-height: 1.3;
+  --text-h5-sm--letter-spacing: 0em;
   --text-h5: 1.5rem; /* H5 24 */
   --text-h5--line-height: 1.2;
   --text-h5--letter-spacing: -0.02em;
+  --text-shoulder-sm: 0.75rem; /* Mobile/Shoulder 12 */
+  --text-shoulder-sm--line-height: 1.3;
+  --text-shoulder-sm--letter-spacing: 0em;
   --text-shoulder: 1.25rem; /* Shoulder 20 */
   --text-shoulder--line-height: 1;
   --text-shoulder--letter-spacing: -0.02em;

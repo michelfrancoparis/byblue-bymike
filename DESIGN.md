@@ -32,7 +32,7 @@ Via `next/font`, instances in `lib/fonts.ts`.
 | Body / UI | General Sans — **Inter placeholder** until files arrive | `font-sans` (default) | 500    |
 | Headings  | Haffer XH (`assets/fonts/HafferXH-Medium.woff2`)        | `font-display`        | 500    |
 
-Figma type styles (desktop, px): Display 120/0.9 · H1 68/1 · H2 48/1 · H3 32/1.2 · H4 28/1.2 · H5 24/1.2 (Haffer XH) · H6 20/1.2 · Body L 24 · Body M 16/1.3 · Body S 14/1.3 · Caption 12/1.3 (General Sans). Tight negative tracking throughout. Type tokens in `globals.css` (`@theme`): `text-display`, `text-h1`, `text-h2`, `text-h4`, `text-h5`, `text-shoulder` (Haffer) · `text-lead`, `text-h6`, `text-body`, `text-body-sm`, `text-caption` (General Sans) — each bundles size, line-height, tracking. `-sm` variants are provisional mobile sizes (no mobile frames yet).
+Figma type styles (desktop, px): Display 120/0.9 · H1 68/1 · H2 48/1 · H3 32/1.2 · H4 28/1.2 · H5 24/1.2 (Haffer XH) · H6 20/1.2 · Body L 24 · Body M 16/1.3 · Body S 14/1.3 · Caption 12/1.3 (General Sans). Tight negative tracking throughout. Type tokens in `globals.css` (`@theme`): `text-display`, `text-h1`, `text-h2`, `text-h3`, `text-h4`, `text-h5`, `text-shoulder` (Haffer) · `text-lead`, `text-h6`, `text-body`, `text-body-sm`, `text-caption` (General Sans) — each bundles size, line-height, tracking. `-sm` variants are the Figma mobile styles (Mobile/Display 40, Mobile/H3 22 for section titles, Mobile/H5 18, Mobile/Shoulder 12); pair them as `text-x-sm md:text-x`. Descriptions use `text-body md:text-h6`. `text-h3` (32) is for card and menu titles at every size.
 
 Fluid type scale: standard — 16px flat to 1440px, then 16→22px by 2560px. Mechanics: website-guidelines → Fluid type scale.
 

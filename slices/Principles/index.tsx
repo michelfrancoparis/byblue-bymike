@@ -28,7 +28,9 @@ const Principles = ({ slice }: PrinciplesProps) => {
     >
       <div className="divider origin-top scale-y-50" />
       {primary.eyebrow && (
-        <p className="font-display text-shoulder mt-4">{primary.eyebrow}</p>
+        <p className="font-display text-shoulder-sm md:text-shoulder mt-4">
+          {primary.eyebrow}
+        </p>
       )}
 
       <div
@@ -52,7 +54,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
         </div>
         <div
           className={cn(
-            'text-h6 text-muted',
+            'text-body md:text-h6 text-muted',
             withTitles && 'col-span-4 max-w-92 md:col-start-7',
             compact && 'col-span-4 max-w-109 md:col-start-9',
             !beside && 'max-w-100',
@@ -76,7 +78,9 @@ const Principles = ({ slice }: PrinciplesProps) => {
                 />
               )}
               {card.label && (
-                <h3 className="font-display text-h5">{card.label}</h3>
+                <h3 className="font-display text-h5-sm md:text-h5">
+                  {card.label}
+                </h3>
               )}
             </li>
           ))}
@@ -97,7 +101,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
                     field={card.title}
                     components={{
                       heading3: ({ children }) => (
-                        <h3 className="font-display text-h5 max-w-75">
+                        <h3 className="font-display text-h5-sm md:text-h5 max-w-75">
                           {children}
                         </h3>
                       ),
@@ -121,7 +125,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
                     className="h-13 w-auto self-start"
                   />
                 )}
-                <div className="font-display text-h5 max-w-83">
+                <div className="font-display text-h5-sm md:text-h5 max-w-83">
                   <PrismicRichText field={card.text} />
                 </div>
               </li>

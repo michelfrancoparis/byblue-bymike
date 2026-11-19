@@ -16,7 +16,9 @@ const TitleWithImage = ({ slice }: TitleWithImageProps) => {
       className="container py-18"
     >
       <div className="font-display flex flex-col items-center gap-12 text-center">
-        {primary.eyebrow && <p className="text-shoulder">{primary.eyebrow}</p>}
+        {primary.eyebrow && (
+          <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
+        )}
         <PrismicRichText
           field={primary.title}
           components={{

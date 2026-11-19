@@ -139,7 +139,7 @@ export function TimelineCarousel({
                       field={milestone.title}
                       components={{
                         heading3: ({ children }) => (
-                          <h3 className="font-display text-h5 before:bg-lime flex items-center gap-2 before:size-3 before:shrink-0 before:rounded-full before:content-['']">
+                          <h3 className="font-display text-h5-sm md:text-h5 before:bg-lime flex items-center gap-2 before:size-3 before:shrink-0 before:rounded-full before:content-['']">
                             {children}
                           </h3>
                         ),

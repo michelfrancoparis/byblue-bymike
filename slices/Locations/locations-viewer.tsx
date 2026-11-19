@@ -67,7 +67,7 @@ export function LocationsViewer({
 
         <div className="flex flex-col gap-3 pl-2" aria-live="polite">
           {location.label && <p className="text-body-sm">{location.label}</p>}
-          <h3 className="font-display text-h2-sm">{location.name}</h3>
+          <h3 className="font-display text-h3">{location.name}</h3>
           <div className="text-body opacity-60">
             <PrismicRichText field={location.address} />
           </div>

@@ -109,7 +109,7 @@ export function PortfolioViewer({
               </div>
 
               <div className="flex flex-col gap-8 p-3">
-                <h3 className="font-display text-h2-sm leading-tight">
+                <h3 className="font-display text-h3 leading-tight">
                   {variety.name}
                 </h3>
                 <div className="flex flex-wrap items-center justify-between gap-3">
@@ -149,7 +149,7 @@ function SpecList({ title, specs }: { title: string; specs: Spec[] }) {
   if (specs.length === 0) return null
   return (
     <div className="flex flex-col gap-3">
-      <h4 className="font-display text-h6">{title}</h4>
+      <h4 className="font-display text-body md:text-h6">{title}</h4>
       <dl className="text-body-sm grid grid-cols-2 gap-x-4">
         {specs.map((spec) => (
           <div

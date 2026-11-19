@@ -20,7 +20,9 @@ const PhaseTimeline = ({ slice }: PhaseTimelineProps) => {
       className="container py-18 md:pt-40"
     >
       <div className="font-display flex flex-col items-center gap-12 text-center">
-        {primary.eyebrow && <p className="text-shoulder">{primary.eyebrow}</p>}
+        {primary.eyebrow && (
+          <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
+        )}
         <PrismicRichText
           field={primary.title}
           components={{
@@ -63,7 +65,7 @@ const PhaseTimeline = ({ slice }: PhaseTimelineProps) => {
                     )}
                     <div className="flex flex-col gap-4">
                       {phase.title && (
-                        <h3 className="font-display text-h2-sm leading-tight">
+                        <h3 className="font-display text-h3 leading-tight">
                           {phase.title}
                         </h3>
                       )}

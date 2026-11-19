@@ -2,6 +2,7 @@ import type { Content } from '@prismicio/client'
 import { asDate } from '@prismicio/client'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText, type SliceComponentProps } from '@prismicio/react'
+import { cn } from '@/lib/utils'
 import { createClient } from '@/prismicio'
 
 export type NewsProps = SliceComponentProps<Content.NewsSlice>
@@ -27,13 +28,13 @@ const News = async ({ slice }: NewsProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container pt-22 pb-24"
+      className="container pt-18 pb-24 md:pt-22"
     >
       {/* Draws left→right on first scroll-in (later). */}
       <div className="divider origin-top scale-y-50" />
       <div className="grid-default font-display mt-4">
         {primary.eyebrow && (
-          <p className="text-shoulder col-span-4 md:col-span-6">
+          <p className="text-shoulder-sm md:text-shoulder col-span-4 md:col-span-6">
             {primary.eyebrow}
           </p>
         )}
@@ -50,9 +51,13 @@ const News = async ({ slice }: NewsProps) => {
       </div>
 
       {articles.length > 0 && (
-        <ul className="-mx-global px-global mt-24 flex scrollbar-none gap-8 overflow-x-auto md:mt-72">
-          {articles.map((article) => (
-            <li key={article.id} className="shrink-0">
+        // Mobile: the 3 latest as a list. Desktop: a sliding strip of all.
+        <ul className="md:-mx-global md:px-global mt-16 flex scrollbar-none flex-col gap-6 md:mt-72 md:flex-row md:gap-8 md:overflow-x-auto">
+          {articles.map((article, index) => (
+            <li
+              key={article.id}
+              className={cn('md:shrink-0', index >= 3 && 'hidden md:block')}
+            >
               <NewsCard article={article} />
             </li>
           ))}
@@ -69,7 +74,7 @@ function NewsCard({ article }: { article: Content.NewsArticleDocument }) {
   return (
     <PrismicNextLink
       field={data.link}
-      className="hover:bg-card flex items-center gap-6 rounded-2xl p-4 transition-colors"
+      className="md:hover:bg-card flex items-stretch gap-6 rounded-2xl transition-colors md:items-center md:p-4"
     >
       <div className="bg-muted relative h-25 w-33.5 shrink-0 overflow-hidden rounded-xl">
         <PrismicNextImage
@@ -80,12 +85,14 @@ function NewsCard({ article }: { article: Content.NewsArticleDocument }) {
           className="object-cover"
         />
       </div>
-      <div className="flex flex-col gap-6 pb-2">
+      <div className="flex min-w-0 flex-col justify-between gap-6 md:justify-start md:pb-2">
         <PrismicRichText
           field={data.title}
           components={{
             heading3: ({ children }) => (
-              <h3 className="font-display text-h5 w-75">{children}</h3>
+              <h3 className="text-body md:font-display md:text-h5 md:w-75">
+                {children}
+              </h3>
             ),
           }}
         />

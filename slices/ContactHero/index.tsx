@@ -39,7 +39,9 @@ const ContactHero = ({ slice }: ContactHeroProps) => {
 
         <div className="relative flex max-w-150 flex-col gap-10 p-5">
           {primary.eyebrow && (
-            <p className="font-display text-shoulder">{primary.eyebrow}</p>
+            <p className="font-display text-shoulder-sm md:text-shoulder">
+              {primary.eyebrow}
+            </p>
           )}
           <PrismicRichText
             field={primary.title}
@@ -51,7 +53,7 @@ const ContactHero = ({ slice }: ContactHeroProps) => {
               ),
             }}
           />
-          <div className="text-h6 max-w-132">
+          <div className="text-body md:text-h6 max-w-132">
             <PrismicRichText field={primary.description} />
           </div>
         </div>

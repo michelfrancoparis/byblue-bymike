@@ -33,7 +33,9 @@ const OriginsMap = async ({ slice }: OriginsMapProps) => {
     >
       <div className="divider origin-top scale-y-50" />
       {primary.eyebrow && (
-        <p className="font-display text-shoulder mt-4">{primary.eyebrow}</p>
+        <p className="font-display text-shoulder-sm md:text-shoulder mt-4">
+          {primary.eyebrow}
+        </p>
       )}
 
       <div className="grid-default mt-14 gap-y-6">

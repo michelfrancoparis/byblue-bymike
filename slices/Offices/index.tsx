@@ -31,7 +31,9 @@ const Offices = ({ slice }: OfficesProps) => {
       <div className="container">
         <div className="font-display flex flex-col items-center gap-12 text-center">
           {primary.eyebrow && (
-            <p className="text-shoulder">{primary.eyebrow}</p>
+            <p className="text-shoulder-sm md:text-shoulder">
+              {primary.eyebrow}
+            </p>
           )}
           <PrismicRichText
             field={primary.title}

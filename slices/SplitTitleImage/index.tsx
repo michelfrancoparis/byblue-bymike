@@ -43,7 +43,7 @@ const SplitTitleImage = ({ slice }: SplitTitleImageProps) => {
           />
         </div>
 
-        <div className="text-h6 mx-auto max-w-117.5 md:col-start-2 md:row-start-2">
+        <div className="text-body md:text-h6 mx-auto max-w-117.5 md:col-start-2 md:row-start-2">
           <PrismicRichText field={primary.description} />
         </div>
       </div>

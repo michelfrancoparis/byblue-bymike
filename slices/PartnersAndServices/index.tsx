@@ -28,7 +28,9 @@ const PartnersAndServices = ({ slice }: PartnersAndServicesProps) => {
       className="container flex flex-col items-center pt-32 pb-24"
     >
       <div className="font-display flex flex-col items-center gap-12 text-center">
-        {primary.eyebrow && <p className="text-shoulder">{primary.eyebrow}</p>}
+        {primary.eyebrow && (
+          <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
+        )}
         <PrismicRichText
           field={primary.title}
           components={{
@@ -72,7 +74,9 @@ const PartnersAndServices = ({ slice }: PartnersAndServicesProps) => {
                 field={card.title}
                 components={{
                   heading3: ({ children }) => (
-                    <h3 className="font-display text-h5">{children}</h3>
+                    <h3 className="font-display text-h5-sm md:text-h5">
+                      {children}
+                    </h3>
                   ),
                 }}
               />

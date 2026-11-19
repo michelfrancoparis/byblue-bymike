@@ -16,7 +16,9 @@ const PhotoCards = ({ slice }: PhotoCardsProps) => {
     >
       <div className="divider origin-top scale-y-50" />
       {primary.eyebrow && (
-        <p className="font-display text-shoulder mt-4">{primary.eyebrow}</p>
+        <p className="font-display text-shoulder-sm md:text-shoulder mt-4">
+          {primary.eyebrow}
+        </p>
       )}
 
       <div className="grid-default mt-17 items-start gap-y-8">
@@ -32,7 +34,7 @@ const PhotoCards = ({ slice }: PhotoCardsProps) => {
             }}
           />
         </div>
-        <div className="text-h6 text-muted col-span-4 max-w-109 md:col-start-9">
+        <div className="text-body md:text-h6 text-muted col-span-4 max-w-109 md:col-start-9">
           <PrismicRichText field={primary.description} />
         </div>
       </div>
@@ -52,7 +54,7 @@ const PhotoCards = ({ slice }: PhotoCardsProps) => {
             />
             <div className="photo-card-glass text-background absolute inset-x-2 bottom-2 flex flex-col gap-2 rounded-2xl p-4">
               {card.title && (
-                <h3 className="font-display text-h5 flex items-center gap-2">
+                <h3 className="font-display text-h5-sm md:text-h5 flex items-center gap-2">
                   <span
                     aria-hidden="true"
                     className="bg-background size-3 shrink-0 rounded-full"

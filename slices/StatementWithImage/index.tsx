@@ -17,7 +17,9 @@ const StatementWithImage = ({ slice }: StatementWithImageProps) => {
     >
       <div className="divider origin-top scale-y-50" />
       {primary.eyebrow && (
-        <p className="font-display text-shoulder mt-4">{primary.eyebrow}</p>
+        <p className="font-display text-shoulder-sm md:text-shoulder mt-4">
+          {primary.eyebrow}
+        </p>
       )}
 
       <div className="grid-default mt-16 gap-y-12">
@@ -32,7 +34,7 @@ const StatementWithImage = ({ slice }: StatementWithImageProps) => {
               ),
             }}
           />
-          <div className="text-h6 text-muted max-w-117">
+          <div className="text-body md:text-h6 text-muted max-w-117">
             <PrismicRichText field={primary.text} />
           </div>
         </div>

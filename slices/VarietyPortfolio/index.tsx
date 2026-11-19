@@ -47,7 +47,9 @@ const VarietyPortfolio = ({ slice }: VarietyPortfolioProps) => {
       <div className="grid-default gap-y-8">
         <div className="font-display col-span-4 flex flex-col gap-12 md:col-span-6">
           {primary.eyebrow && (
-            <p className="text-shoulder">{primary.eyebrow}</p>
+            <p className="text-shoulder-sm md:text-shoulder">
+              {primary.eyebrow}
+            </p>
           )}
           <PrismicRichText
             field={primary.title}
@@ -58,7 +60,7 @@ const VarietyPortfolio = ({ slice }: VarietyPortfolioProps) => {
             }}
           />
         </div>
-        <div className="text-h6 text-muted col-span-4 flex max-w-146 flex-col gap-6 md:col-span-5 md:col-start-8 md:pt-14">
+        <div className="text-body md:text-h6 text-muted col-span-4 flex max-w-146 flex-col gap-6 md:col-span-5 md:col-start-8 md:pt-14">
           <PrismicRichText field={primary.description} />
         </div>
       </div>
