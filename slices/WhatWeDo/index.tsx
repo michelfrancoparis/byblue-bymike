@@ -74,7 +74,7 @@ const WhatWeDo = ({ slice }: WhatWeDoProps) => {
                     key={index}
                     aria-current={isActive ? 'step' : undefined}
                     className={cn(
-                      'flex items-center gap-2 px-2 py-2.5',
+                      'flex cursor-pointer items-center gap-2 px-2 py-2.5',
                       !isActive && 'opacity-30',
                     )}
                   >

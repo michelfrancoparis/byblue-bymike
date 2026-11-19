@@ -228,7 +228,7 @@ export function SiteNav({
             </div>
 
             {languageLabel && (
-              <span className="flex items-center gap-1 rounded-full border border-current px-3.5 py-3 leading-none">
+              <span className="flex cursor-pointer items-center gap-1 rounded-full border border-current px-3.5 py-3 leading-none">
                 <GlobeIcon className="size-5" />
                 {languageLabel}
                 <ChevronDownIcon className="h-5 w-3" />
@@ -279,7 +279,10 @@ function MenuLink({
       {content}
     </PrismicNextLink>
   ) : (
-    <span className={className} onPointerEnter={onActivate}>
+    <span
+      className={cn(className, 'cursor-pointer')}
+      onPointerEnter={onActivate}
+    >
       {content}
     </span>
   )

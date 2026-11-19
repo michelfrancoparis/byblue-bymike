@@ -125,5 +125,5 @@ function MaybeLink({
       </PrismicNextLink>
     )
   }
-  return <span className={className}>{children}</span>
+  return <span className={cn('cursor-pointer', className)}>{children}</span>
 }

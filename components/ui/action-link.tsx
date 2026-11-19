@@ -58,6 +58,6 @@ export function ActionLink({
       {content}
     </PrismicNextLink>
   ) : (
-    <span className={classes}>{content}</span>
+    <span className={cn(classes, 'cursor-pointer')}>{content}</span>
   )
 }

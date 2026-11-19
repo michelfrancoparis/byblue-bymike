@@ -81,6 +81,13 @@
 }
 
 @layer base {
+  /* Tailwind v4 dropped the pointer on buttons; bring it back for every
+     enabled button so new controls get it too. */
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+
   /*
     Fluid type scale — the root font-size scales with the viewport, and every
     rem-based Tailwind value (text, spacing, gaps) scales with it. 1rem = 16px
