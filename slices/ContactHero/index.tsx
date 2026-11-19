@@ -91,13 +91,15 @@ const ContactHero = ({ slice }: ContactHeroProps) => {
                     <div className="relative">
                       <select
                         id={id}
-                        defaultValue=""
+                        defaultValue={field.placeholder ? '' : undefined}
                         aria-describedby={helpId}
                         className={cn(inputClass, 'appearance-none pr-10')}
                       >
-                        <option value="" disabled>
-                          {field.placeholder}
-                        </option>
+                        {field.placeholder && (
+                          <option value="" disabled>
+                            {field.placeholder}
+                          </option>
+                        )}
                         {options.map((option) => (
                           <option key={option}>{option}</option>
                         ))}
