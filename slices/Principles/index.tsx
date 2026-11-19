@@ -49,7 +49,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
         <div
           className={cn(
             'text-h6 text-muted',
-            withTitles ? 'col-span-4 max-w-86 md:col-start-7' : 'max-w-95',
+            withTitles ? 'col-span-4 max-w-92 md:col-start-7' : 'max-w-100',
           )}
         >
           <PrismicRichText field={primary.description} />
