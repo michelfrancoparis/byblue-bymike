@@ -42,7 +42,7 @@ export function LocationsViewer({
           fallbackAlt=""
           sizes="100vw"
           className={cn(
-            'object-cover transition-opacity duration-500',
+            'object-cover transition-opacity',
             index === current ? 'opacity-100' : 'opacity-0',
           )}
         />
@@ -58,7 +58,7 @@ export function LocationsViewer({
               fallbackAlt=""
               sizes="(min-width: 48em) 28rem, 8rem"
               className={cn(
-                'object-cover transition-opacity duration-500',
+                'object-cover transition-opacity',
                 index === current ? 'opacity-100' : 'opacity-0',
               )}
             />

@@ -81,7 +81,7 @@ export function OfficeList({
             fallbackAlt=""
             sizes="(min-width: 64em) 65vw, 100vw"
             className={cn(
-              'object-cover transition-opacity duration-500',
+              'object-cover transition-opacity',
               index === current ? 'opacity-100' : 'opacity-0',
             )}
           />

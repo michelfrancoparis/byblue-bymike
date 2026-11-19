@@ -46,3 +46,10 @@ Fluid type scale: standard — 16px flat to 1440px, then 16→22px by 2560px. Me
 ## Icons
 
 One set, consistent stroke width. SVG components in `components/icons/` — copy the `arrow.tsx` pattern.
+
+## Motion
+
+One curve and one duration everywhere: **ease-in-out quart, 0.4s** — no springs, no bounce.
+
+- CSS: `--ease-quart` (`cubic-bezier(0.76, 0, 0.24, 1)`) and `--default-transition-duration: 400ms` are the defaults for every `transition-*` utility — don't add `duration-*` / `ease-*` unless a case truly needs it.
+- GSAP: use `MOTION` from `lib/motion.ts` (`power3.inOut` = quart, `0.4`).

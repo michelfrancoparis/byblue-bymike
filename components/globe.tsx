@@ -183,7 +183,7 @@ function Earth({ locations }: { locations: GlobeLocation[] }) {
               labelRefs.current[index] = element
             }}
             className={cn(
-              'absolute top-0 flex -translate-y-1/2 items-center gap-3 transition-opacity duration-300',
+              'absolute top-0 flex -translate-y-1/2 items-center gap-3 transition-opacity',
               marker.side === 'right'
                 ? 'left-0 -translate-x-2.5'
                 : 'right-0 translate-x-2.5 flex-row-reverse',

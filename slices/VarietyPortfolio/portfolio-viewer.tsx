@@ -96,7 +96,7 @@ export function PortfolioViewer({
                   id={detailsId}
                   inert={!open}
                   className={cn(
-                    'bg-card absolute inset-0 flex flex-col gap-6 overflow-y-auto p-4 transition-opacity duration-300',
+                    'bg-card absolute inset-0 flex flex-col gap-6 overflow-y-auto p-4 transition-opacity',
                     open ? 'opacity-100' : 'opacity-0',
                   )}
                 >

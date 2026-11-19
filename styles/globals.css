@@ -90,6 +90,12 @@
   --text-caption--letter-spacing: -0.01em;
 
   --spacing-global: var(--spacing-global);
+
+  /* Motion: one curve and one duration for the whole site (ease-in-out quart,
+     0.4s). Every transition-* utility uses these unless told otherwise. */
+  --ease-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --default-transition-duration: 400ms;
+  --default-transition-timing-function: var(--ease-quart);
 }
 
 @layer base {

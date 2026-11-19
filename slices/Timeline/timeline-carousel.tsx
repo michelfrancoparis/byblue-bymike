@@ -7,6 +7,7 @@ import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText } from '@prismicio/react'
 import gsap from 'gsap'
 import { cn } from '@/lib/utils'
+import { MOTION } from '@/lib/motion'
 
 gsap.registerPlugin(useGSAP)
 
@@ -70,8 +71,8 @@ export function TimelineCarousel({
 
         gsap[immediate ? 'set' : 'to'](track, {
           x: targetX,
-          duration: immediate ? 0 : 0.7,
-          ease: 'power3.inOut',
+          duration: immediate ? 0 : MOTION.duration,
+          ease: MOTION.ease,
           overwrite: 'auto',
         })
       })

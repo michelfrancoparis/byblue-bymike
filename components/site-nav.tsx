@@ -16,6 +16,7 @@ import { LogoMark } from '@/components/icons/logo-mark'
 import { LogoWordmark } from '@/components/icons/logo-wordmark'
 import { MenuIcon } from '@/components/icons/menu'
 import { SITE_NAME } from '@/lib/constants'
+import { MOTION } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 
 gsap.registerPlugin(useGSAP)
@@ -59,24 +60,18 @@ export function SiteNav({
         const primary = getComputedStyle(nav).getPropertyValue('--primary')
         const tl = gsap.timeline({
           paused: true,
-          defaults: { ease: 'power3.inOut' },
+          defaults: { ease: MOTION.ease, duration: MOTION.duration },
         })
         tl.set(nav, { width: nav.offsetWidth, maxWidth: 'none' })
           .to(nav, {
             width: () => panel.offsetWidth,
             borderRadius: '2rem',
             backgroundColor: primary,
-            duration: 0.45,
           })
           .to(nav, {
             height: () => panel.offsetTop + panel.offsetHeight,
-            duration: 0.5,
           })
-          .to(
-            panel,
-            { opacity: 1, duration: 0.35, ease: 'power1.out' },
-            '-=0.3',
-          )
+          .to(panel, { opacity: 1 }, '-=0.25')
         return tl
       }
 
@@ -206,7 +201,7 @@ export function SiteNav({
                   fallbackAlt=""
                   sizes="25rem"
                   className={cn(
-                    'object-cover transition-opacity duration-300',
+                    'object-cover transition-opacity',
                     hovered === index ? 'opacity-100' : 'opacity-0',
                   )}
                 />

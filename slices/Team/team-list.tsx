@@ -36,7 +36,7 @@ export function TeamList({
           <li key={member.id} className="relative flex items-start gap-2">
             <div
               className={cn(
-                'bg-card relative size-26.5 shrink-0 overflow-hidden transition-all duration-500 ease-out',
+                'bg-card relative size-26.5 shrink-0 overflow-hidden transition-all',
                 // Below lg the open member's photo moves inside its card (Figma).
                 open ? 'rounded-3xl max-lg:hidden lg:size-85' : 'rounded-2xl',
               )}
@@ -52,7 +52,7 @@ export function TeamList({
 
             <div
               className={cn(
-                'bg-card flex min-h-26.5 min-w-0 flex-1 flex-col p-6 transition-all duration-500 ease-out',
+                'bg-card flex min-h-26.5 min-w-0 flex-1 flex-col p-6 transition-all',
                 open ? 'rounded-3xl lg:min-h-85' : 'rounded-2xl',
               )}
             >
@@ -92,7 +92,7 @@ export function TeamList({
                 id={bioId}
                 inert={!open}
                 className={cn(
-                  'grid transition-all duration-500 ease-out',
+                  'grid transition-all',
                   open
                     ? 'rows-expanded opacity-100'
                     : 'rows-collapsed opacity-0',
