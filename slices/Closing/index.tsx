@@ -34,7 +34,7 @@ const Closing = ({ slice }: ClosingProps) => {
           field={primary.title}
           components={{
             heading2: ({ children }) => (
-              <h2 className="font-display text-display-sm md:text-display relative max-w-304 px-6 text-center">
+              <h2 className="font-display text-display-sm md:text-display relative max-w-338 px-6 text-center">
                 {children}
               </h2>
             ),
