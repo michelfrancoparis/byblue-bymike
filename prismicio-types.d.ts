@@ -1503,6 +1503,41 @@ export interface PrinciplesSliceDefaultPrimaryCardsItem {
 }
 
 /**
+ * Item in *Principles → Cards with titles → Primary → Cards*
+ */
+export interface PrinciplesSliceCardsWithTitlesPrimaryCardsItem {
+  /**
+   * Icon field in *Principles → Cards with titles → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.cardsWithTitles.primary.cards[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>
+
+  /**
+   * Title field in *Principles → Cards with titles → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.cardsWithTitles.primary.cards[].title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Text field in *Principles → Cards with titles → Primary → Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.cardsWithTitles.primary.cards[].text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  text: prismic.RichTextField
+}
+
+/**
  * Primary content in *Principles → Default → Primary*
  */
 export interface PrinciplesSliceDefaultPrimary {
@@ -1561,9 +1596,71 @@ export type PrinciplesSliceDefault = prismic.SharedSliceVariation<
 >
 
 /**
+ * Primary content in *Principles → Cards with titles → Primary*
+ */
+export interface PrinciplesSliceCardsWithTitlesPrimary {
+  /**
+   * Eyebrow field in *Principles → Cards with titles → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: The Way We Grow
+   * - **API ID Path**: principles.cardsWithTitles.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Principles → Cards with titles → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.cardsWithTitles.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Principles → Cards with titles → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.cardsWithTitles.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Cards field in *Principles → Cards with titles → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.cardsWithTitles.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<PrinciplesSliceCardsWithTitlesPrimaryCardsItem>
+  >
+}
+
+/**
+ * Cards with titles variation for Principles Slice
+ *
+ * - **API ID**: `cardsWithTitles`
+ * - **Description**: Cards with titles
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrinciplesSliceCardsWithTitles = prismic.SharedSliceVariation<
+  'cardsWithTitles',
+  Simplify<PrinciplesSliceCardsWithTitlesPrimary>,
+  never
+>
+
+/**
  * Slice variation for *Principles*
  */
-type PrinciplesSliceVariation = PrinciplesSliceDefault
+type PrinciplesSliceVariation =
+  | PrinciplesSliceDefault
+  | PrinciplesSliceCardsWithTitles
 
 /**
  * Principles Shared Slice
@@ -2163,8 +2260,11 @@ declare module '@prismicio/client' {
       PrinciplesSlice,
       PrinciplesSliceDefaultPrimaryCardsItem,
       PrinciplesSliceDefaultPrimary,
+      PrinciplesSliceCardsWithTitlesPrimaryCardsItem,
+      PrinciplesSliceCardsWithTitlesPrimary,
       PrinciplesSliceVariation,
       PrinciplesSliceDefault,
+      PrinciplesSliceCardsWithTitles,
       ProductionCalendarSlice,
       ProductionCalendarSliceDefaultPrimaryCountriesItem,
       ProductionCalendarSliceDefaultPrimary,

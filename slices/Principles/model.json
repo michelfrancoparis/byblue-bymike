@@ -54,6 +54,65 @@
         }
       },
       "version": ""
+    },
+    {
+      "description": "Cards with titles",
+      "docURL": "",
+      "id": "cardsWithTitles",
+      "imageUrl": "",
+      "name": "Cards with titles",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "The Way We Grow"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "cards": {
+          "config": {
+            "fields": {
+              "icon": {
+                "config": {
+                  "label": "Icon"
+                },
+                "type": "Image"
+              },
+              "title": {
+                "config": {
+                  "label": "Title",
+                  "single": "heading3"
+                },
+                "type": "StructuredText"
+              },
+              "text": {
+                "config": {
+                  "label": "Text",
+                  "multi": "paragraph"
+                },
+                "type": "StructuredText"
+              }
+            },
+            "label": "Cards"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
     }
   ]
 }
