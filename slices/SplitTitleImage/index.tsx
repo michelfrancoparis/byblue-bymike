@@ -19,17 +19,18 @@ const SplitTitleImage = ({ slice }: SplitTitleImageProps) => {
       data-slice-variation={slice.variation}
       className="bg-primary flex min-h-svh items-center py-24"
     >
-      <div className="container grid items-center gap-x-2 gap-y-12 text-center md:grid-cols-3 md:gap-y-16">
-        <h2 className="font-display text-h1-sm md:text-h1 md:contents">
-          <span className="md:col-start-1 md:row-start-1">
+      <div className="container grid items-center gap-x-2 gap-y-16 text-center lg:grid-cols-3">
+        {/* Mobile: first word above the image, second below (Figma). */}
+        <h2 className="font-display text-h1-sm md:text-h1 contents">
+          <span className="lg:col-start-1 lg:row-start-1">
             {primary.title_left}
           </span>{' '}
-          <span className="md:col-start-3 md:row-start-1">
+          <span className="order-1 lg:order-none lg:col-start-3 lg:row-start-1">
             {primary.title_right}
           </span>
         </h2>
 
-        <div className="mask-greenhouse relative mx-auto aspect-47/35 w-full max-w-117.5 md:col-start-2 md:row-start-1">
+        <div className="mask-greenhouse relative mx-auto aspect-47/35 w-full max-w-73.5 md:max-w-117.5 lg:col-start-2 lg:row-start-1">
           <PrismicNextImage
             field={primary.image}
             fill
@@ -43,7 +44,7 @@ const SplitTitleImage = ({ slice }: SplitTitleImageProps) => {
           />
         </div>
 
-        <div className="text-body md:text-h6 mx-auto max-w-117.5 md:col-start-2 md:row-start-2">
+        <div className="text-body md:text-h6 order-2 mx-auto max-w-85.5 md:max-w-117.5 lg:order-none lg:col-start-2 lg:row-start-2">
           <PrismicRichText field={primary.description} />
         </div>
       </div>

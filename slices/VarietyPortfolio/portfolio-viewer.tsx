@@ -43,7 +43,7 @@ export function PortfolioViewer({
     <div className={className}>
       {/* Only worth showing once there is more than one family. */}
       {families.length > 1 && (
-        <div className="mb-6 flex justify-center">
+        <div className="-mx-global px-global mb-4 flex md:mx-0 md:mb-6 md:justify-center md:px-0">
           <div
             role="tablist"
             className="bg-card flex max-w-full scrollbar-none gap-1 overflow-x-auto rounded-full p-1"
@@ -75,7 +75,7 @@ export function PortfolioViewer({
         </div>
       )}
 
-      <ul className="portfolio-track scrollbar-none">
+      <ul className="portfolio-track -mx-global px-global scroll-px-global scrollbar-none md:mx-0 md:scroll-px-0 md:px-0">
         {visible.map((variety) => {
           const open = variety.id === openId
           const detailsId = `variety-details-${variety.id}`
@@ -84,7 +84,7 @@ export function PortfolioViewer({
               key={variety.id}
               className="bg-card flex snap-start flex-col gap-4 rounded-4xl p-2"
             >
-              <div className="bg-background relative aspect-square overflow-hidden rounded-3xl">
+              <div className="bg-background relative aspect-107/100 overflow-hidden rounded-3xl md:aspect-square">
                 <PrismicNextImage
                   field={variety.image}
                   fill
@@ -109,7 +109,7 @@ export function PortfolioViewer({
               </div>
 
               <div className="flex flex-col gap-8 p-3">
-                <h3 className="font-display text-h3 leading-tight">
+                <h3 className="font-display text-h4-sm md:text-h3 md:leading-tight">
                   {variety.name}
                 </h3>
                 <div className="flex flex-wrap items-center justify-between gap-3">

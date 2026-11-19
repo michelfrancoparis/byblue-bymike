@@ -47,7 +47,12 @@ const Principles = ({ slice }: PrinciplesProps) => {
             field={primary.title}
             components={{
               heading2: ({ children }) => (
-                <h2 className="font-display text-h2-sm md:text-h2 max-w-117">
+                <h2
+                  className={cn(
+                    'font-display text-h2-sm md:text-h2 max-w-117',
+                    compact && 'max-md:text-balance',
+                  )}
+                >
                   {children}
                 </h2>
               ),
@@ -69,6 +74,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
       <ul
         className={cn(
           'grid-default mt-24 gap-y-2',
+          compact && 'mt-16 md:mt-24',
           // Mobile: cards slide sideways, one at a time (Figma).
           (withTitles || slice.variation === 'default') &&
             '-mx-global px-global mt-16 flex snap-x snap-mandatory scroll-px-2 scrollbar-none gap-2 overflow-x-auto md:mx-0 md:mt-24 md:grid md:overflow-visible md:px-0',
@@ -78,16 +84,16 @@ const Principles = ({ slice }: PrinciplesProps) => {
           slice.primary.cards.map((card, index) => (
             <li
               key={index}
-              className="bg-primary col-span-4 flex flex-col gap-10 rounded-4xl p-6 md:col-span-6 lg:col-span-4"
+              className="bg-primary col-span-4 flex min-h-19 items-center gap-5 rounded-3xl px-6 py-4 md:col-span-6 md:min-h-0 md:flex-col md:items-start md:gap-10 md:rounded-4xl md:p-6 lg:col-span-4"
             >
               {card.icon.url && (
                 <PrismicImage
                   field={card.icon}
-                  className="h-13 w-auto self-start"
+                  className="h-auto w-8 shrink-0 md:h-13 md:w-auto"
                 />
               )}
               {card.label && (
-                <h3 className="font-display text-h5-sm md:text-h5">
+                <h3 className="font-display text-h4-sm md:text-h5">
                   {card.label}
                 </h3>
               )}
