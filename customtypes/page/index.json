@@ -59,6 +59,9 @@
             },
             "phase_timeline": {
               "type": "SharedSlice"
+            },
+            "variety_portfolio": {
+              "type": "SharedSlice"
             }
           }
         },

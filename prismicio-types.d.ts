@@ -719,6 +719,7 @@ type PageDocumentDataSlicesSlice =
   | SplitTitleImageSlice
   | PhotoCardsSlice
   | PhaseTimelineSlice
+  | VarietyPortfolioSlice
 
 /**
  * Content for Page documents
@@ -894,6 +895,169 @@ export type TeamMemberDocument<Lang extends string = string> =
     Lang
   >
 
+/**
+ * Item in *Variety → Plant specs*
+ */
+export interface VarietyDocumentDataPlantSpecsItem {
+  /**
+   * Label field in *Variety → Plant specs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Growth habit
+   * - **API ID Path**: variety.plant_specs[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Value field in *Variety → Plant specs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Erect
+   * - **API ID Path**: variety.plant_specs[].value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  value: prismic.KeyTextField
+}
+
+/**
+ * Item in *Variety → Fruit specs*
+ */
+export interface VarietyDocumentDataFruitSpecsItem {
+  /**
+   * Label field in *Variety → Fruit specs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Average weight
+   * - **API ID Path**: variety.fruit_specs[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Value field in *Variety → Fruit specs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: 3.5 g
+   * - **API ID Path**: variety.fruit_specs[].value
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  value: prismic.KeyTextField
+}
+
+/**
+ * Content for Variety documents
+ */
+interface VarietyDocumentData {
+  /**
+   * Name field in *Variety*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Dana
+   * - **API ID Path**: variety.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Family field in *Variety*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: Blueberries
+   * - **API ID Path**: variety.family
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  family: prismic.SelectField<
+    | 'Blueberries'
+    | 'Strawberries'
+    | 'Raspberries'
+    | 'Blackberries'
+    | 'Cranberries',
+    'filled'
+  >
+
+  /**
+   * Size (calibre) field in *Variety*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: L
+   * - **API ID Path**: variety.size
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  size: prismic.KeyTextField
+
+  /**
+   * Code field in *Variety*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: FV-1907
+   * - **API ID Path**: variety.code
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  code: prismic.KeyTextField
+
+  /**
+   * Image field in *Variety*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Description field in *Variety*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Plant specs field in *Variety*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety.plant_specs[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  plant_specs: prismic.GroupField<Simplify<VarietyDocumentDataPlantSpecsItem>>
+
+  /**
+   * Fruit specs field in *Variety*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety.fruit_specs[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  fruit_specs: prismic.GroupField<Simplify<VarietyDocumentDataFruitSpecsItem>>
+}
+
+/**
+ * Variety document from Prismic
+ *
+ * - **API ID**: `variety`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type VarietyDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<VarietyDocumentData>, 'variety', Lang>
+
 export type AllDocumentTypes =
   | CountryDocument
   | FooterDocument
@@ -904,6 +1068,7 @@ export type AllDocumentTypes =
   | PageDocument
   | PartnerDocument
   | TeamMemberDocument
+  | VarietyDocument
 
 /**
  * Item in *Certifications → Default → Primary → Certification groups → Certifications*
@@ -2824,6 +2989,144 @@ export type TitleWithImageSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *VarietyPortfolio → Default → Primary → Varieties (in order)*
+ */
+export interface VarietyPortfolioSliceDefaultPrimaryVarietiesItem {
+  /**
+   * Variety field in *VarietyPortfolio → Default → Primary → Varieties (in order)*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety_portfolio.default.primary.varieties[].variety
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  variety: ContentRelationshipFieldWithData<
+    [
+      {
+        fields: [
+          'name',
+          'family',
+          'size',
+          'code',
+          'image',
+          'description',
+          { fields: ['label', 'value']; id: 'plant_specs' },
+          { fields: ['label', 'value']; id: 'fruit_specs' },
+        ]
+        id: 'variety'
+      },
+    ]
+  >
+}
+
+/**
+ * Primary content in *VarietyPortfolio → Default → Primary*
+ */
+export interface VarietyPortfolioSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Portfolio
+   * - **API ID Path**: variety_portfolio.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety_portfolio.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety_portfolio.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Filter: all label field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: All
+   * - **API ID Path**: variety_portfolio.default.primary.all_label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  all_label: prismic.KeyTextField
+
+  /**
+   * Varieties (in order) field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety_portfolio.default.primary.varieties[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  varieties: prismic.GroupField<
+    Simplify<VarietyPortfolioSliceDefaultPrimaryVarietiesItem>
+  >
+
+  /**
+   * Partner logo field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety_portfolio.default.primary.partner_logo
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  partner_logo: prismic.ImageField<never>
+
+  /**
+   * Partner text field in *VarietyPortfolio → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: variety_portfolio.default.primary.partner_text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  partner_text: prismic.RichTextField
+}
+
+/**
+ * Default variation for VarietyPortfolio Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VarietyPortfolioSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<VarietyPortfolioSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *VarietyPortfolio*
+ */
+type VarietyPortfolioSliceVariation = VarietyPortfolioSliceDefault
+
+/**
+ * VarietyPortfolio Shared Slice
+ *
+ * - **API ID**: `variety_portfolio`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VarietyPortfolioSlice = prismic.SharedSlice<
+  'variety_portfolio',
+  VarietyPortfolioSliceVariation
+>
+
+/**
  * Item in *What We Do → Default → Primary → Focus areas*
  */
 export interface WhatWeDoSliceDefaultPrimaryAreasItem {
@@ -3009,6 +3312,10 @@ declare module '@prismicio/client' {
       PartnerDocumentData,
       TeamMemberDocument,
       TeamMemberDocumentData,
+      VarietyDocument,
+      VarietyDocumentData,
+      VarietyDocumentDataPlantSpecsItem,
+      VarietyDocumentDataFruitSpecsItem,
       AllDocumentTypes,
       CertificationsSlice,
       CertificationsSliceDefaultPrimaryGroupsCertificationsItem,
@@ -3100,6 +3407,11 @@ declare module '@prismicio/client' {
       TitleWithImageSliceDefaultPrimary,
       TitleWithImageSliceVariation,
       TitleWithImageSliceDefault,
+      VarietyPortfolioSlice,
+      VarietyPortfolioSliceDefaultPrimaryVarietiesItem,
+      VarietyPortfolioSliceDefaultPrimary,
+      VarietyPortfolioSliceVariation,
+      VarietyPortfolioSliceDefault,
       WhatWeDoSlice,
       WhatWeDoSliceDefaultPrimaryAreasItem,
       WhatWeDoSliceDefaultPrimary,

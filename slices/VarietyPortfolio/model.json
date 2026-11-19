@@ -1,0 +1,94 @@
+{
+  "id": "variety_portfolio",
+  "name": "VarietyPortfolio",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Portfolio"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "all_label": {
+          "config": {
+            "label": "Filter: all label",
+            "placeholder": "All"
+          },
+          "type": "Text"
+        },
+        "varieties": {
+          "config": {
+            "fields": {
+              "variety": {
+                "config": {
+                  "customtypes": [
+                    {
+                      "fields": [
+                        "name",
+                        "family",
+                        "size",
+                        "code",
+                        "image",
+                        "description",
+                        {
+                          "fields": ["label", "value"],
+                          "id": "plant_specs"
+                        },
+                        {
+                          "fields": ["label", "value"],
+                          "id": "fruit_specs"
+                        }
+                      ],
+                      "id": "variety"
+                    }
+                  ],
+                  "label": "Variety",
+                  "select": "document"
+                },
+                "type": "Link"
+              }
+            },
+            "label": "Varieties (in order)"
+          },
+          "type": "Group"
+        },
+        "partner_logo": {
+          "config": {
+            "label": "Partner logo"
+          },
+          "type": "Image"
+        },
+        "partner_text": {
+          "config": {
+            "label": "Partner text",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

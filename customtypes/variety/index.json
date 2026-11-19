@@ -1,0 +1,109 @@
+{
+  "format": "custom",
+  "id": "variety",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "config": {
+          "label": "Name",
+          "placeholder": "Dana"
+        },
+        "type": "Text"
+      },
+      "family": {
+        "config": {
+          "default_value": "Blueberries",
+          "label": "Family",
+          "options": [
+            "Blueberries",
+            "Strawberries",
+            "Raspberries",
+            "Blackberries",
+            "Cranberries"
+          ]
+        },
+        "type": "Select"
+      },
+      "size": {
+        "config": {
+          "label": "Size (calibre)",
+          "placeholder": "L"
+        },
+        "type": "Text"
+      },
+      "code": {
+        "config": {
+          "label": "Code",
+          "placeholder": "FV-1907"
+        },
+        "type": "Text"
+      },
+      "image": {
+        "config": {
+          "label": "Image"
+        },
+        "type": "Image"
+      },
+      "description": {
+        "config": {
+          "label": "Description",
+          "multi": "paragraph"
+        },
+        "type": "StructuredText"
+      },
+      "plant_specs": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "Label",
+                "placeholder": "Growth habit"
+              },
+              "type": "Text"
+            },
+            "value": {
+              "config": {
+                "label": "Value",
+                "placeholder": "Erect"
+              },
+              "type": "Text"
+            }
+          },
+          "label": "Plant specs"
+        },
+        "type": "Group"
+      },
+      "fruit_specs": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "Label",
+                "placeholder": "Average weight"
+              },
+              "type": "Text"
+            },
+            "value": {
+              "config": {
+                "label": "Value",
+                "placeholder": "3.5 g"
+              },
+              "type": "Text"
+            }
+          },
+          "label": "Fruit specs"
+        },
+        "type": "Group"
+      }
+    }
+  },
+  "label": "Variety",
+  "repeatable": true,
+  "status": true
+}

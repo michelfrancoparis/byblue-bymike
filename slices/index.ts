@@ -18,6 +18,7 @@ import StatementWithImage from './StatementWithImage'
 import Team from './Team'
 import Timeline from './Timeline'
 import TitleWithImage from './TitleWithImage'
+import VarietyPortfolio from './VarietyPortfolio'
 import WhatWeDo from './WhatWeDo'
 
 export const components = {
@@ -39,5 +40,6 @@ export const components = {
   team: Team,
   timeline: Timeline,
   title_with_image: TitleWithImage,
+  variety_portfolio: VarietyPortfolio,
   what_we_do: WhatWeDo,
 }
