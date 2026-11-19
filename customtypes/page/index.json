@@ -44,6 +44,9 @@
             },
             "production_calendar": {
               "type": "SharedSlice"
+            },
+            "team": {
+              "type": "SharedSlice"
             }
           }
         },

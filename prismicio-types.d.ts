@@ -638,6 +638,7 @@ type PageDocumentDataSlicesSlice =
   | PrinciplesSlice
   | TitleWithImageSlice
   | ProductionCalendarSlice
+  | TeamSlice
 
 /**
  * Content for Page documents
@@ -748,6 +749,71 @@ interface PartnerDocumentData {
 export type PartnerDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PartnerDocumentData>, 'partner', Lang>
 
+/**
+ * Content for Team Member documents
+ */
+interface TeamMemberDocumentData {
+  /**
+   * Name field in *Team Member*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Horacio Ozer Ami
+   * - **API ID Path**: team_member.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * Role field in *Team Member*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: CEO & Founder
+   * - **API ID Path**: team_member.role
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  role: prismic.KeyTextField
+
+  /**
+   * Photo field in *Team Member*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_member.photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photo: prismic.ImageField<never>
+
+  /**
+   * Bio field in *Team Member*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team_member.bio
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  bio: prismic.RichTextField
+}
+
+/**
+ * Team Member document from Prismic
+ *
+ * - **API ID**: `team_member`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TeamMemberDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TeamMemberDocumentData>,
+    'team_member',
+    Lang
+  >
+
 export type AllDocumentTypes =
   | CountryDocument
   | FooterDocument
@@ -756,6 +822,7 @@ export type AllDocumentTypes =
   | NewsArticleDocument
   | PageDocument
   | PartnerDocument
+  | TeamMemberDocument
 
 /**
  * Item in *Certifications → Default → Primary → Certification groups → Certifications*
@@ -1943,6 +2010,95 @@ export type StatementWithImageSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *Team → Default → Primary → Members (in order)*
+ */
+export interface TeamSliceDefaultPrimaryMembersItem {
+  /**
+   * Team member field in *Team → Default → Primary → Members (in order)*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.default.primary.members[].member
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  member: ContentRelationshipFieldWithData<
+    [{ fields: ['name', 'role', 'photo', 'bio']; id: 'team_member' }]
+  >
+}
+
+/**
+ * Primary content in *Team → Default → Primary*
+ */
+export interface TeamSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Team → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Our Team
+   * - **API ID Path**: team.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Team → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Team → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Members (in order) field in *Team → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: team.default.primary.members[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  members: prismic.GroupField<Simplify<TeamSliceDefaultPrimaryMembersItem>>
+}
+
+/**
+ * Default variation for Team Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<TeamSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Team*
+ */
+type TeamSliceVariation = TeamSliceDefault
+
+/**
+ * Team Shared Slice
+ *
+ * - **API ID**: `team`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type TeamSlice = prismic.SharedSlice<'team', TeamSliceVariation>
+
+/**
  * Item in *Timeline → Default → Primary → Milestones*
  */
 export interface TimelineSliceDefaultPrimaryMilestonesItem {
@@ -2301,6 +2457,8 @@ declare module '@prismicio/client' {
       PageDocumentDataSlicesSlice,
       PartnerDocument,
       PartnerDocumentData,
+      TeamMemberDocument,
+      TeamMemberDocumentData,
       AllDocumentTypes,
       CertificationsSlice,
       CertificationsSliceDefaultPrimaryGroupsCertificationsItem,
@@ -2356,6 +2514,11 @@ declare module '@prismicio/client' {
       StatementWithImageSliceDefaultPrimary,
       StatementWithImageSliceVariation,
       StatementWithImageSliceDefault,
+      TeamSlice,
+      TeamSliceDefaultPrimaryMembersItem,
+      TeamSliceDefaultPrimary,
+      TeamSliceVariation,
+      TeamSliceDefault,
       TimelineSlice,
       TimelineSliceDefaultPrimaryMilestonesItem,
       TimelineSliceDefaultPrimary,

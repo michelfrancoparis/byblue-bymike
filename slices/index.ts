@@ -11,6 +11,7 @@ import PartnersAndServices from './PartnersAndServices'
 import Principles from './Principles'
 import ProductionCalendar from './ProductionCalendar'
 import StatementWithImage from './StatementWithImage'
+import Team from './Team'
 import Timeline from './Timeline'
 import TitleWithImage from './TitleWithImage'
 import WhatWeDo from './WhatWeDo'
@@ -27,6 +28,7 @@ export const components = {
   principles: Principles,
   production_calendar: ProductionCalendar,
   statement_with_image: StatementWithImage,
+  team: Team,
   timeline: Timeline,
   title_with_image: TitleWithImage,
   what_we_do: WhatWeDo,

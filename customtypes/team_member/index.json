@@ -1,0 +1,44 @@
+{
+  "format": "custom",
+  "id": "team_member",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "config": {
+          "label": "Name",
+          "placeholder": "Horacio Ozer Ami"
+        },
+        "type": "Text"
+      },
+      "role": {
+        "config": {
+          "label": "Role",
+          "placeholder": "CEO & Founder"
+        },
+        "type": "Text"
+      },
+      "photo": {
+        "config": {
+          "label": "Photo"
+        },
+        "type": "Image"
+      },
+      "bio": {
+        "config": {
+          "label": "Bio",
+          "multi": "paragraph"
+        },
+        "type": "StructuredText"
+      }
+    }
+  },
+  "label": "Team Member",
+  "repeatable": true,
+  "status": true
+}

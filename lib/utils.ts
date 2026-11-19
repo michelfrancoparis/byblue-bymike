@@ -16,6 +16,7 @@ export const cn = createCn({
         'h1-sm',
         'h2',
         'h2-sm',
+        'h4',
         'h5',
         'h6',
         'lead',
