@@ -473,6 +473,82 @@ export type HomepageDocument<Lang extends string = string> =
   >
 
 /**
+ * Content for Location documents
+ */
+interface LocationDocumentData {
+  /**
+   * Name field in *Location*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Rotterdam
+   * - **API ID Path**: location.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField
+
+  /**
+   * What happens here field in *Location*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: European HQ, Commercial & Logistics
+   * - **API ID Path**: location.label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Address field in *Location*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.address
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  address: prismic.RichTextField
+
+  /**
+   * Background photo field in *Location*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.photo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  photo: prismic.ImageField<never>
+
+  /**
+   * Map image field in *Location*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: location.map
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  map: prismic.ImageField<never>
+}
+
+/**
+ * Location document from Prismic
+ *
+ * - **API ID**: `location`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LocationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LocationDocumentData>,
+    'location',
+    Lang
+  >
+
+/**
  * Item in *Navigation → Menu links*
  */
 export interface NavigationDocumentDataLinksItem {
@@ -639,6 +715,7 @@ type PageDocumentDataSlicesSlice =
   | TitleWithImageSlice
   | ProductionCalendarSlice
   | TeamSlice
+  | LocationsSlice
 
 /**
  * Content for Page documents
@@ -818,6 +895,7 @@ export type AllDocumentTypes =
   | CountryDocument
   | FooterDocument
   | HomepageDocument
+  | LocationDocument
   | NavigationDocument
   | NewsArticleDocument
   | PageDocument
@@ -1288,6 +1366,90 @@ type ImageWithCardsSliceVariation = ImageWithCardsSliceDefault
 export type ImageWithCardsSlice = prismic.SharedSlice<
   'image_with_cards',
   ImageWithCardsSliceVariation
+>
+
+/**
+ * Item in *Locations → Default → Primary → Locations (in order)*
+ */
+export interface LocationsSliceDefaultPrimaryLocationsItem {
+  /**
+   * Location field in *Locations → Default → Primary → Locations (in order)*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations.default.primary.locations[].location
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  location: ContentRelationshipFieldWithData<
+    [{ fields: ['name', 'label', 'address', 'photo', 'map']; id: 'location' }]
+  >
+}
+
+/**
+ * Primary content in *Locations → Default → Primary*
+ */
+export interface LocationsSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *Locations → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Locations
+   * - **API ID Path**: locations.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Locations → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Locations (in order) field in *Locations → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: locations.default.primary.locations[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  locations: prismic.GroupField<
+    Simplify<LocationsSliceDefaultPrimaryLocationsItem>
+  >
+}
+
+/**
+ * Default variation for Locations Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LocationsSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<LocationsSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *Locations*
+ */
+type LocationsSliceVariation = LocationsSliceDefault
+
+/**
+ * Locations Shared Slice
+ *
+ * - **API ID**: `locations`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LocationsSlice = prismic.SharedSlice<
+  'locations',
+  LocationsSliceVariation
 >
 
 /**
@@ -2447,6 +2609,8 @@ declare module '@prismicio/client' {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      LocationDocument,
+      LocationDocumentData,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataLinksItem,
@@ -2479,6 +2643,11 @@ declare module '@prismicio/client' {
       ImageWithCardsSliceDefaultPrimary,
       ImageWithCardsSliceVariation,
       ImageWithCardsSliceDefault,
+      LocationsSlice,
+      LocationsSliceDefaultPrimaryLocationsItem,
+      LocationsSliceDefaultPrimary,
+      LocationsSliceVariation,
+      LocationsSliceDefault,
       NewsSlice,
       NewsSliceDefaultPrimary,
       NewsSliceVariation,

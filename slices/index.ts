@@ -4,6 +4,7 @@ import Certifications from './Certifications'
 import Closing from './Closing'
 import Hero from './Hero'
 import ImageWithCards from './ImageWithCards'
+import Locations from './Locations'
 import News from './News'
 import OriginsMap from './OriginsMap'
 import PageHero from './PageHero'
@@ -21,6 +22,7 @@ export const components = {
   closing: Closing,
   hero: Hero,
   image_with_cards: ImageWithCards,
+  locations: Locations,
   news: News,
   origins_map: OriginsMap,
   page_hero: PageHero,

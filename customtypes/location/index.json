@@ -1,0 +1,50 @@
+{
+  "format": "custom",
+  "id": "location",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "config": {
+          "label": "Name",
+          "placeholder": "Rotterdam"
+        },
+        "type": "Text"
+      },
+      "label": {
+        "config": {
+          "label": "What happens here",
+          "placeholder": "European HQ, Commercial & Logistics"
+        },
+        "type": "Text"
+      },
+      "address": {
+        "config": {
+          "label": "Address",
+          "multi": "paragraph"
+        },
+        "type": "StructuredText"
+      },
+      "photo": {
+        "config": {
+          "label": "Background photo"
+        },
+        "type": "Image"
+      },
+      "map": {
+        "config": {
+          "label": "Map image"
+        },
+        "type": "Image"
+      }
+    }
+  },
+  "label": "Location",
+  "repeatable": true,
+  "status": true
+}

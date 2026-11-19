@@ -47,6 +47,9 @@
             },
             "team": {
               "type": "SharedSlice"
+            },
+            "locations": {
+              "type": "SharedSlice"
             }
           }
         },

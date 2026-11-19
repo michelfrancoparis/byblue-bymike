@@ -198,3 +198,13 @@
 @utility rows-expanded {
   grid-template-rows: 1fr;
 }
+
+/* Location card: Figma glass — white 20% over black 30%, blurred, with a
+   faint inner edge. */
+@utility location-glass {
+  background:
+    linear-gradient(rgb(255 255 255 / 20%), rgb(255 255 255 / 20%)),
+    rgb(0 0 0 / 30%);
+  box-shadow: inset 0 0 0.0835625rem rgb(255 255 255 / 50%);
+  backdrop-filter: blur(1.25rem);
+}
