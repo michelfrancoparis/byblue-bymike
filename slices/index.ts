@@ -9,6 +9,7 @@ import News from './News'
 import OriginsMap from './OriginsMap'
 import PageHero from './PageHero'
 import PartnersAndServices from './PartnersAndServices'
+import PhaseTimeline from './PhaseTimeline'
 import PhotoCards from './PhotoCards'
 import Principles from './Principles'
 import ProductionCalendar from './ProductionCalendar'
@@ -29,6 +30,7 @@ export const components = {
   origins_map: OriginsMap,
   page_hero: PageHero,
   partners_services: PartnersAndServices,
+  phase_timeline: PhaseTimeline,
   photo_cards: PhotoCards,
   principles: Principles,
   production_calendar: ProductionCalendar,

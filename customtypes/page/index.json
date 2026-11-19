@@ -56,6 +56,9 @@
             },
             "photo_cards": {
               "type": "SharedSlice"
+            },
+            "phase_timeline": {
+              "type": "SharedSlice"
             }
           }
         },

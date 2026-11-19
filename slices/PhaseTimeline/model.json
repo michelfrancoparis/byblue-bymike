@@ -1,0 +1,65 @@
+{
+  "id": "phase_timeline",
+  "name": "PhaseTimeline",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Genetic Development"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "phases": {
+          "config": {
+            "fields": {
+              "image": {
+                "config": {
+                  "label": "Image"
+                },
+                "type": "Image"
+              },
+              "tag": {
+                "config": {
+                  "label": "Tag",
+                  "placeholder": "Phase 1"
+                },
+                "type": "Text"
+              },
+              "title": {
+                "config": {
+                  "label": "Title",
+                  "placeholder": "Program Initiated"
+                },
+                "type": "Text"
+              },
+              "text": {
+                "config": {
+                  "label": "Text"
+                },
+                "type": "Text"
+              }
+            },
+            "label": "Phases"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
+    }
+  ]
+}

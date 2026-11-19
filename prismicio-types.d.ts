@@ -718,6 +718,7 @@ type PageDocumentDataSlicesSlice =
   | LocationsSlice
   | SplitTitleImageSlice
   | PhotoCardsSlice
+  | PhaseTimelineSlice
 
 /**
  * Content for Page documents
@@ -1788,6 +1789,118 @@ export type PartnersServicesSlice = prismic.SharedSlice<
 >
 
 /**
+ * Item in *PhaseTimeline → Default → Primary → Phases*
+ */
+export interface PhaseTimelineSliceDefaultPrimaryPhasesItem {
+  /**
+   * Image field in *PhaseTimeline → Default → Primary → Phases*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: phase_timeline.default.primary.phases[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+
+  /**
+   * Tag field in *PhaseTimeline → Default → Primary → Phases*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Phase 1
+   * - **API ID Path**: phase_timeline.default.primary.phases[].tag
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  tag: prismic.KeyTextField
+
+  /**
+   * Title field in *PhaseTimeline → Default → Primary → Phases*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Program Initiated
+   * - **API ID Path**: phase_timeline.default.primary.phases[].title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField
+
+  /**
+   * Text field in *PhaseTimeline → Default → Primary → Phases*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: phase_timeline.default.primary.phases[].text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField
+}
+
+/**
+ * Primary content in *PhaseTimeline → Default → Primary*
+ */
+export interface PhaseTimelineSliceDefaultPrimary {
+  /**
+   * Eyebrow field in *PhaseTimeline → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Genetic Development
+   * - **API ID Path**: phase_timeline.default.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *PhaseTimeline → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: phase_timeline.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Phases field in *PhaseTimeline → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: phase_timeline.default.primary.phases[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  phases: prismic.GroupField<
+    Simplify<PhaseTimelineSliceDefaultPrimaryPhasesItem>
+  >
+}
+
+/**
+ * Default variation for PhaseTimeline Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PhaseTimelineSliceDefault = prismic.SharedSliceVariation<
+  'default',
+  Simplify<PhaseTimelineSliceDefaultPrimary>,
+  never
+>
+
+/**
+ * Slice variation for *PhaseTimeline*
+ */
+type PhaseTimelineSliceVariation = PhaseTimelineSliceDefault
+
+/**
+ * PhaseTimeline Shared Slice
+ *
+ * - **API ID**: `phase_timeline`
+ * - **Description**: *None*
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PhaseTimelineSlice = prismic.SharedSlice<
+  'phase_timeline',
+  PhaseTimelineSliceVariation
+>
+
+/**
  * Item in *PhotoCards → Default → Primary → Cards*
  */
 export interface PhotoCardsSliceDefaultPrimaryCardsItem {
@@ -2853,6 +2966,11 @@ declare module '@prismicio/client' {
       PartnersServicesSliceDefaultPrimary,
       PartnersServicesSliceVariation,
       PartnersServicesSliceDefault,
+      PhaseTimelineSlice,
+      PhaseTimelineSliceDefaultPrimaryPhasesItem,
+      PhaseTimelineSliceDefaultPrimary,
+      PhaseTimelineSliceVariation,
+      PhaseTimelineSliceDefault,
       PhotoCardsSlice,
       PhotoCardsSliceDefaultPrimaryCardsItem,
       PhotoCardsSliceDefaultPrimary,
