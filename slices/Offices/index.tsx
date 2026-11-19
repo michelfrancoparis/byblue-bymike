@@ -29,7 +29,7 @@ const Offices = ({ slice }: OfficesProps) => {
       className="bg-primary py-18 md:py-21"
     >
       <div className="container">
-        <div className="font-display flex flex-col items-center gap-12 text-center">
+        <div className="font-display flex flex-col items-start gap-6 md:items-center md:gap-12 md:text-center">
           {primary.eyebrow && (
             <p className="text-shoulder-sm md:text-shoulder">
               {primary.eyebrow}
@@ -39,7 +39,7 @@ const Offices = ({ slice }: OfficesProps) => {
             field={primary.title}
             components={{
               heading2: ({ children }) => (
-                <h2 className="text-h1-sm md:text-h1 max-w-180 text-balance">
+                <h2 className="text-h1-sm md:text-h1 max-w-69 text-balance md:max-w-180">
                   {children}
                 </h2>
               ),
