@@ -12,10 +12,13 @@ export type PrinciplesProps = SliceComponentProps<Content.PrinciplesSlice>
  * Divider + eyebrow, title with short text, then a row of icon cards.
  * Default: text under the title, 3 cards with one line each.
  * Cards with titles: text beside the title, 4 taller cards with title + text.
+ * Compact cards: text beside the title, small icon + label cards, 3 per row.
  */
 const Principles = ({ slice }: PrinciplesProps) => {
   const { primary } = slice
   const withTitles = slice.variation === 'cardsWithTitles'
+  const compact = slice.variation === 'compactCards'
+  const beside = withTitles || compact
 
   return (
     <section
@@ -31,10 +34,11 @@ const Principles = ({ slice }: PrinciplesProps) => {
       <div
         className={cn(
           'mt-17',
-          withTitles ? 'grid-default items-end gap-y-8' : 'flex flex-col gap-8',
+          beside ? 'grid-default gap-y-8' : 'flex flex-col gap-8',
+          withTitles && 'items-end',
         )}
       >
-        <div className={cn(withTitles && 'col-span-4 md:col-span-6')}>
+        <div className={cn(beside && 'col-span-4 md:col-span-6')}>
           <PrismicRichText
             field={primary.title}
             components={{
@@ -49,7 +53,9 @@ const Principles = ({ slice }: PrinciplesProps) => {
         <div
           className={cn(
             'text-h6 text-muted',
-            withTitles ? 'col-span-4 max-w-92 md:col-start-7' : 'max-w-100',
+            withTitles && 'col-span-4 max-w-92 md:col-start-7',
+            compact && 'col-span-4 max-w-109 md:col-start-9',
+            !beside && 'max-w-100',
           )}
         >
           <PrismicRichText field={primary.description} />
@@ -57,6 +63,23 @@ const Principles = ({ slice }: PrinciplesProps) => {
       </div>
 
       <ul className="grid-default mt-24 gap-y-2">
+        {slice.variation === 'compactCards' &&
+          slice.primary.cards.map((card, index) => (
+            <li
+              key={index}
+              className="bg-primary col-span-4 flex flex-col gap-10 rounded-4xl p-6 md:col-span-6 lg:col-span-4"
+            >
+              {card.icon.url && (
+                <PrismicImage
+                  field={card.icon}
+                  className="h-13 w-auto self-start"
+                />
+              )}
+              {card.label && (
+                <h3 className="font-display text-h5">{card.label}</h3>
+              )}
+            </li>
+          ))}
         {slice.variation === 'cardsWithTitles'
           ? slice.primary.cards.map((card, index) => (
               <li
@@ -86,7 +109,8 @@ const Principles = ({ slice }: PrinciplesProps) => {
                 </div>
               </li>
             ))
-          : slice.primary.cards.map((card, index) => (
+          : slice.variation === 'default' &&
+            slice.primary.cards.map((card, index) => (
               <li
                 key={index}
                 className="bg-primary col-span-4 flex flex-col gap-10 rounded-4xl py-8 pr-6 pl-8"

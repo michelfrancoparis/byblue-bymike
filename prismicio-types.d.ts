@@ -2071,6 +2071,31 @@ export interface PrinciplesSliceCardsWithTitlesPrimaryCardsItem {
 }
 
 /**
+ * Item in *Principles → Compact cards → Primary → Cards*
+ */
+export interface PrinciplesSliceCompactCardsPrimaryCardsItem {
+  /**
+   * Icon field in *Principles → Compact cards → Primary → Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.compactCards.primary.cards[].icon
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  icon: prismic.ImageField<never>
+
+  /**
+   * Label field in *Principles → Compact cards → Primary → Cards*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: High yield
+   * - **API ID Path**: principles.compactCards.primary.cards[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+}
+
+/**
  * Primary content in *Principles → Default → Primary*
  */
 export interface PrinciplesSliceDefaultPrimary {
@@ -2189,11 +2214,72 @@ export type PrinciplesSliceCardsWithTitles = prismic.SharedSliceVariation<
 >
 
 /**
+ * Primary content in *Principles → Compact cards → Primary*
+ */
+export interface PrinciplesSliceCompactCardsPrimary {
+  /**
+   * Eyebrow field in *Principles → Compact cards → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Trait Development Focus
+   * - **API ID Path**: principles.compactCards.primary.eyebrow
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  eyebrow: prismic.KeyTextField
+
+  /**
+   * Title field in *Principles → Compact cards → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.compactCards.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField
+
+  /**
+   * Description field in *Principles → Compact cards → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.compactCards.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField
+
+  /**
+   * Cards field in *Principles → Compact cards → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: principles.compactCards.primary.cards[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  cards: prismic.GroupField<
+    Simplify<PrinciplesSliceCompactCardsPrimaryCardsItem>
+  >
+}
+
+/**
+ * Compact cards variation for Principles Slice
+ *
+ * - **API ID**: `compactCards`
+ * - **Description**: Compact cards
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type PrinciplesSliceCompactCards = prismic.SharedSliceVariation<
+  'compactCards',
+  Simplify<PrinciplesSliceCompactCardsPrimary>,
+  never
+>
+
+/**
  * Slice variation for *Principles*
  */
 type PrinciplesSliceVariation =
   | PrinciplesSliceDefault
   | PrinciplesSliceCardsWithTitles
+  | PrinciplesSliceCompactCards
 
 /**
  * Principles Shared Slice
@@ -2981,9 +3067,12 @@ declare module '@prismicio/client' {
       PrinciplesSliceDefaultPrimary,
       PrinciplesSliceCardsWithTitlesPrimaryCardsItem,
       PrinciplesSliceCardsWithTitlesPrimary,
+      PrinciplesSliceCompactCardsPrimaryCardsItem,
+      PrinciplesSliceCompactCardsPrimary,
       PrinciplesSliceVariation,
       PrinciplesSliceDefault,
       PrinciplesSliceCardsWithTitles,
+      PrinciplesSliceCompactCards,
       ProductionCalendarSlice,
       ProductionCalendarSliceDefaultPrimaryCountriesItem,
       ProductionCalendarSliceDefaultPrimary,

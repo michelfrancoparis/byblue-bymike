@@ -113,6 +113,58 @@
         }
       },
       "version": ""
+    },
+    {
+      "description": "Compact cards",
+      "docURL": "",
+      "id": "compactCards",
+      "imageUrl": "",
+      "name": "Compact cards",
+      "primary": {
+        "eyebrow": {
+          "config": {
+            "label": "Eyebrow",
+            "placeholder": "Trait Development Focus"
+          },
+          "type": "Text"
+        },
+        "title": {
+          "config": {
+            "label": "Title",
+            "single": "heading2"
+          },
+          "type": "StructuredText"
+        },
+        "description": {
+          "config": {
+            "label": "Description",
+            "multi": "paragraph"
+          },
+          "type": "StructuredText"
+        },
+        "cards": {
+          "config": {
+            "fields": {
+              "icon": {
+                "config": {
+                  "label": "Icon"
+                },
+                "type": "Image"
+              },
+              "label": {
+                "config": {
+                  "label": "Label",
+                  "placeholder": "High yield"
+                },
+                "type": "Text"
+              }
+            },
+            "label": "Cards"
+          },
+          "type": "Group"
+        }
+      },
+      "version": ""
     }
   ]
 }
