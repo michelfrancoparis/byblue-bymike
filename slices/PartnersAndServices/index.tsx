@@ -25,9 +25,9 @@ const PartnersAndServices = ({ slice }: PartnersAndServicesProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container flex flex-col items-center pt-32 pb-24"
+      className="container flex flex-col items-center pt-18 pb-16 md:pt-32 md:pb-24"
     >
-      <div className="font-display flex flex-col items-center gap-12 text-center">
+      <div className="font-display flex flex-col items-start gap-6 self-stretch md:items-center md:gap-12 md:self-auto md:text-center">
         {primary.eyebrow && (
           <p className="text-shoulder-sm md:text-shoulder">{primary.eyebrow}</p>
         )}
@@ -42,9 +42,12 @@ const PartnersAndServices = ({ slice }: PartnersAndServicesProps) => {
       </div>
 
       {partners.length > 0 && (
-        <ul className="mt-16 flex w-full max-w-313 flex-wrap justify-center gap-6 md:mt-21.5 md:flex-nowrap md:justify-between">
+        <ul className="-mx-global px-global mt-12 flex w-screen max-w-none scrollbar-none gap-3 overflow-x-auto md:mx-0 md:mt-21.5 md:w-full md:max-w-313 md:justify-between md:gap-6 md:overflow-visible md:px-0">
           {partners.map((partner) => (
-            <li key={partner.id} className="relative h-15 w-48">
+            <li
+              key={partner.id}
+              className="relative h-12 w-38 shrink-0 md:h-15 md:w-48 md:shrink"
+            >
               <PrismicNextImage
                 field={partner.data?.logo}
                 fill
@@ -57,24 +60,24 @@ const PartnersAndServices = ({ slice }: PartnersAndServicesProps) => {
         </ul>
       )}
 
-      <ul className="grid-default mt-24 w-full gap-y-2">
+      <ul className="-mx-global px-global mt-16 flex w-screen snap-x snap-mandatory scroll-px-2 scrollbar-none gap-2 overflow-x-auto md:mx-0 md:mt-24 md:grid md:w-full md:grid-cols-12 md:overflow-visible md:px-0">
         {primary.cards.map((card, index) => (
           <li
             key={index}
-            className="bg-primary text-foreground col-span-4 flex min-h-89 flex-col justify-between gap-12 rounded-4xl p-6"
+            className="bg-primary text-foreground col-span-4 flex min-h-88.5 w-78 shrink-0 snap-start flex-col justify-between gap-24 rounded-3xl p-6 md:min-h-89 md:w-auto md:gap-12 md:rounded-4xl"
           >
             {card.icon.url && (
               <PrismicImage
                 field={card.icon}
-                className="h-13 w-auto self-start"
+                className="h-11.5 w-auto self-start md:h-13"
               />
             )}
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-12 md:gap-8">
               <PrismicRichText
                 field={card.title}
                 components={{
                   heading3: ({ children }) => (
-                    <h3 className="font-display text-h5-sm md:text-h5">
+                    <h3 className="font-display text-h2-sm md:text-h5">
                       {children}
                     </h3>
                   ),
@@ -88,7 +91,11 @@ const PartnersAndServices = ({ slice }: PartnersAndServicesProps) => {
         ))}
       </ul>
 
-      <ActionLink field={primary.link} withIcon={false} className="mt-19" />
+      <ActionLink
+        field={primary.link}
+        withIcon={false}
+        className="mt-6 md:mt-19"
+      />
     </section>
   )
 }
