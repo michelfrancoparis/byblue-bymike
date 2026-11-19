@@ -55,7 +55,7 @@ export function CalendarTable({
         </div>
       )}
 
-      <div className="mt-8 scrollbar-none overflow-x-auto">
+      <div className="relative mt-8 scrollbar-none overflow-x-auto">
         <table className="w-full min-w-200 table-fixed border-collapse">
           <thead>
             <tr className="border-primary-muted border-b">
