@@ -37,14 +37,14 @@ export function TeamList({
             <div
               className={cn(
                 'bg-card relative size-26.5 shrink-0 overflow-hidden transition-all duration-500 ease-out',
-                open ? 'rounded-3xl md:size-85' : 'rounded-2xl',
+                open ? 'rounded-3xl lg:size-85' : 'rounded-2xl',
               )}
             >
               <PrismicNextImage
                 field={member.photo}
                 fill
                 fallbackAlt=""
-                sizes="(min-width: 48em) 21.25rem, 6.625rem"
+                sizes="(min-width: 64em) 21.25rem, 6.625rem"
                 className="object-cover"
               />
             </div>
@@ -52,7 +52,7 @@ export function TeamList({
             <div
               className={cn(
                 'bg-card flex min-h-26.5 min-w-0 flex-1 flex-col p-6 transition-all duration-500 ease-out',
-                open ? 'rounded-3xl md:min-h-85' : 'rounded-2xl',
+                open ? 'rounded-3xl lg:min-h-85' : 'rounded-2xl',
               )}
             >
               <h3 className="font-display text-h5 md:text-h4">
