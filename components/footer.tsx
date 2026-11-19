@@ -18,7 +18,7 @@ export async function Footer() {
   const { data } = footer
 
   return (
-    <footer className="bg-primary text-foreground relative pt-9.5 pb-12 md:pb-5">
+    <footer className="bg-primary text-foreground relative pt-9.5 pb-2.5 md:pb-5">
       <div className="container">
         <div className="grid-default gap-y-12">
           <Column

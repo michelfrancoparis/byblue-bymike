@@ -120,7 +120,8 @@
     never convert to px. To adjust anchors: website-guidelines skill → Styles.
   */
   html {
-    @apply antialiased;
+    /* No rubber-band bounce past the top/bottom (iOS bounces the root). */
+    @apply overscroll-none antialiased;
     /* 0 → 1440px: 16px flat (browser default, respects user preference) */
     font-size: 100%;
   }
