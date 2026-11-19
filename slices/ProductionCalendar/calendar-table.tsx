@@ -1,15 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { ChevronDownIcon } from '@/components/icons/chevron-down'
 import { cn } from '@/lib/utils'
 import { MONTHS, type CalendarRow, type Program } from './months'
 
-const PAGE = 3
-
 /**
- * Program tabs + country × month pill grid + legend. Mobile: one month at a
- * time — pick it from a 3-month strip, chevrons step through the year.
+ * Program tabs + country × month pill grid + legend. Mobile: the grid slides
+ * sideways (~3 months in view) with the country column pinned.
  */
 export function CalendarTable({
   programs,
@@ -26,10 +23,7 @@ export function CalendarTable({
     (program) => programs[program].length > 0,
   )
   const [current, setCurrent] = useState<Program>(tabs[0] ?? 'Conventional')
-  const [month, setMonth] = useState(0)
   const rows = programs[current]
-  const pageStart = month - (month % PAGE)
-  const step = (by: number) => setMonth((previous) => (previous + by + 12) % 12)
 
   if (tabs.length === 0) return null
 
@@ -64,75 +58,11 @@ export function CalendarTable({
         </div>
       )}
 
-      <div className="mt-8 md:hidden">
-        <div className="flex items-center">
-          <button
-            type="button"
-            aria-label="Previous month"
-            onClick={() => step(-1)}
-            className="cursor-pointer"
-          >
-            <ChevronDownIcon className="rotate-90" />
-          </button>
-          {MONTHS.slice(pageStart, pageStart + PAGE).map((name, offset) => {
-            const index = pageStart + offset
-            const selected = index === month
-            return (
-              <button
-                key={name}
-                type="button"
-                aria-pressed={selected}
-                onClick={() => setMonth(index)}
-                className={cn(
-                  'text-body-sm h-11 flex-1 cursor-pointer rounded-full uppercase transition-colors',
-                  selected ? 'bg-foreground/7' : 'opacity-40',
-                )}
-              >
-                {name}
-              </button>
-            )
-          })}
-          <button
-            type="button"
-            aria-label="Next month"
-            onClick={() => step(1)}
-            className="cursor-pointer"
-          >
-            <ChevronDownIcon className="-rotate-90" />
-          </button>
-        </div>
-        <ul className="border-primary-muted mt-3 border-t">
-          {rows.map((row) => {
-            const active = row.active.includes(month)
-            return (
-              <li
-                key={row.name}
-                className="border-primary-muted flex h-14.5 items-center gap-4 border-b"
-              >
-                <span className="text-body w-25 shrink-0 font-medium">
-                  {row.name}
-                </span>
-                <span
-                  className={cn(
-                    'h-5.5 flex-1 rounded-full transition-colors',
-                    active ? 'bg-primary' : 'bg-primary-muted',
-                  )}
-                >
-                  <span className="sr-only">
-                    {active ? activeLabel : offSeasonLabel}
-                  </span>
-                </span>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-
-      <div className="relative mt-8 hidden scrollbar-none overflow-x-auto md:block">
-        <table className="w-full min-w-200 table-fixed border-collapse">
+      <div className="relative mt-8 scrollbar-none overflow-x-auto">
+        <table className="w-full min-w-316 table-fixed border-collapse md:min-w-200">
           <thead>
             <tr className="border-primary-muted border-b">
-              <th className="w-30" />
+              <th className="bg-background sticky left-0 z-10 w-28 md:w-30" />
               {MONTHS.map((month) => (
                 <th
                   key={month}
@@ -149,7 +79,7 @@ export function CalendarTable({
               <tr key={row.name} className="border-primary-muted border-b">
                 <th
                   scope="row"
-                  className="text-body h-14.5 pr-4 text-left font-medium whitespace-nowrap"
+                  className="text-body bg-background sticky left-0 z-10 h-14.5 pr-4 text-left font-medium whitespace-nowrap"
                 >
                   {row.name}
                 </th>
