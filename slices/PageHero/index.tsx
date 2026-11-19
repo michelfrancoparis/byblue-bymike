@@ -15,9 +15,9 @@ const PageHero = ({ slice }: PageHeroProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="h-svh min-h-150 p-2"
+      className="h-svh min-h-150 md:p-2"
     >
-      <div className="bg-foreground text-background relative h-full overflow-hidden rounded-4xl">
+      <div className="bg-foreground text-background relative h-full overflow-hidden md:rounded-4xl">
         <PrismicNextImage
           field={primary.image}
           fill
@@ -32,8 +32,8 @@ const PageHero = ({ slice }: PageHeroProps) => {
           className="page-hero-overlay absolute inset-0"
         />
 
-        <div className="grid-default relative h-full content-end p-6">
-          <div className="font-display col-span-4 flex flex-col gap-8 md:col-span-8">
+        <div className="grid-default relative h-full content-end gap-y-4 px-2 pb-10.5 md:gap-y-0 md:p-6">
+          <div className="font-display col-span-4 flex flex-col gap-6 md:col-span-8 md:gap-8">
             {primary.eyebrow && (
               <p className="text-shoulder-sm md:text-shoulder">
                 {primary.eyebrow}
@@ -51,7 +51,7 @@ const PageHero = ({ slice }: PageHeroProps) => {
             />
           </div>
 
-          <div className="text-body md:text-h6 col-span-4 max-w-80 self-end md:col-span-3 md:col-start-10 md:pb-1.5">
+          <div className="text-body md:text-h6 col-span-4 self-end md:col-span-3 md:col-start-10 md:max-w-80 md:pb-1.5">
             <PrismicRichText field={primary.description} />
           </div>
         </div>

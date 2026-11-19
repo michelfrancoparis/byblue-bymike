@@ -19,6 +19,7 @@ export const cn = createCn({
         'h2-sm',
         'h3',
         'h4',
+        'h4-sm',
         'h5',
         'h5-sm',
         'h6',

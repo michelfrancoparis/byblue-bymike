@@ -35,8 +35,10 @@ const Principles = ({ slice }: PrinciplesProps) => {
 
       <div
         className={cn(
-          'mt-17',
-          beside ? 'grid-default gap-y-8' : 'flex flex-col gap-8',
+          'mt-6 md:mt-17',
+          beside
+            ? 'grid-default gap-y-4 md:gap-y-8'
+            : 'flex flex-col gap-4 md:gap-8',
           withTitles && 'items-end',
         )}
       >
@@ -64,7 +66,14 @@ const Principles = ({ slice }: PrinciplesProps) => {
         </div>
       </div>
 
-      <ul className="grid-default mt-24 gap-y-2">
+      <ul
+        className={cn(
+          'grid-default mt-24 gap-y-2',
+          // Mobile: the tall title cards slide sideways, one at a time (Figma).
+          withTitles &&
+            '-mx-global px-global mt-16 flex snap-x snap-mandatory scroll-px-2 scrollbar-none gap-2 overflow-x-auto md:mx-0 md:mt-24 md:grid md:overflow-visible md:px-0',
+        )}
+      >
         {slice.variation === 'compactCards' &&
           slice.primary.cards.map((card, index) => (
             <li
@@ -88,9 +97,9 @@ const Principles = ({ slice }: PrinciplesProps) => {
           ? slice.primary.cards.map((card, index) => (
               <li
                 key={index}
-                className="bg-primary col-span-4 flex flex-col justify-between gap-12 rounded-4xl p-6 md:col-span-6 md:min-h-89 lg:col-span-3"
+                className="bg-primary col-span-4 flex min-h-88.5 w-78 shrink-0 snap-start flex-col justify-between gap-12 rounded-3xl p-6 md:col-span-6 md:min-h-89 md:w-auto md:rounded-4xl lg:col-span-3"
               >
-                <div className="flex flex-col gap-12 md:gap-24">
+                <div className="flex flex-col gap-24">
                   {card.icon.url && (
                     <PrismicImage
                       field={card.icon}
@@ -101,7 +110,7 @@ const Principles = ({ slice }: PrinciplesProps) => {
                     field={card.title}
                     components={{
                       heading3: ({ children }) => (
-                        <h3 className="font-display text-h5-sm md:text-h5 max-w-75">
+                        <h3 className="font-display text-h2-sm md:text-h5 max-w-75">
                           {children}
                         </h3>
                       ),

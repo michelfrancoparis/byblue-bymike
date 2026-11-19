@@ -50,6 +50,9 @@
   --text-h3: 2rem; /* H3 32 — card and menu titles */
   --text-h3--line-height: 1.2;
   --text-h3--letter-spacing: -0.03em;
+  --text-h4-sm: 1.25rem; /* Mobile/H4 20 */
+  --text-h4-sm--line-height: 1.25;
+  --text-h4-sm--letter-spacing: 0em;
   --text-h4: 1.75rem; /* H4 28 */
   --text-h4--line-height: 1.2;
   --text-h4--letter-spacing: -0.02em;

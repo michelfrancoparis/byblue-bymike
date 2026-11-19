@@ -39,8 +39,8 @@ const Team = ({ slice }: TeamProps) => {
         </p>
       )}
 
-      <div className="grid-default mt-17 gap-y-12">
-        <div className="col-span-4 flex flex-col gap-9 md:col-span-5">
+      <div className="grid-default mt-6 gap-y-16 md:mt-17 md:gap-y-12">
+        <div className="col-span-4 flex flex-col gap-4 md:col-span-5 md:gap-9">
           <PrismicRichText
             field={primary.title}
             components={{
