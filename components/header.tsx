@@ -1,26 +1,24 @@
-import Link from 'next/link'
-import { LogoMark } from '@/components/icons/logo-mark'
-import { LogoWordmark } from '@/components/icons/logo-wordmark'
-import { MenuIcon } from '@/components/icons/menu'
-import { SITE_NAME } from '@/lib/constants'
+import { createClient } from '@/prismicio'
+import { SiteNav } from '@/components/site-nav'
 
-// Static for now — menu and scroll/page-transition motion come later (Figma annotations).
-export function Header() {
+/**
+ * Site header: the menu links and hover images come from the Prismic
+ * "Navigation" document; phone, email and address are reused from "Footer".
+ */
+export async function Header() {
+  const client = createClient()
+  const [navigation, footer] = await Promise.all([
+    client.getSingle('navigation').catch(() => null),
+    client.getSingle('footer').catch(() => null),
+  ])
+
   return (
-    <header className="inset-x-global fixed top-8 z-50 mx-auto max-w-100">
-      <nav className="bg-card text-foreground flex items-center justify-between rounded-2xl px-6 py-4">
-        <LogoMark className="h-8 w-auto" />
-        <Link href="/" aria-label={`${SITE_NAME} home`}>
-          <LogoWordmark className="h-6.5 w-auto" />
-        </Link>
-        <button
-          type="button"
-          aria-label="Open menu"
-          className="flex size-8 items-center justify-center rounded-xs"
-        >
-          <MenuIcon className="size-6" />
-        </button>
-      </nav>
-    </header>
+    <SiteNav
+      links={navigation?.data.links ?? []}
+      languageLabel={navigation?.data.language_label ?? null}
+      phone={footer?.data.phone ?? null}
+      email={footer?.data.email ?? null}
+      address={footer?.data.address ?? []}
+    />
   )
 }

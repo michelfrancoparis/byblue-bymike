@@ -8,15 +8,16 @@ Source: Figma `Handoff | Internal` (file `rOyIXULtmvJiCbcEt4YtPW`) — Colors `8
 
 Semantic tokens only — raw hex lives in `globals.css`, components use tokens. The set stays small: add a role only when the design repeats it.
 
-| Role           | Token                                  | Value                       |
-| -------------- | -------------------------------------- | --------------------------- |
-| Background     | `bg-background` / `--background`       | `#f3edde` Off-White         |
-| Foreground     | `text-foreground` / `--foreground`     | `#161b6d` Blue (Deep Ocean) |
-| Accent         | `bg-primary` / `--primary`             | `#a4d3f6` Light Blue        |
-| Accent muted   | `bg-primary-muted` / `--primary-muted` | `#bfd5de` Light Blue Muted  |
-| Secondary text | `text-muted` / `--muted`               | `#5e638f` Blue Muted        |
-| Card surface   | `bg-card` / `--card`                   | `#ffffff` White             |
-| Label pill     | `bg-lime` / `--lime`                   | `#e8ff7d` Electric Lime     |
+| Role             | Token                                        | Value                       |
+| ---------------- | -------------------------------------------- | --------------------------- |
+| Background       | `bg-background` / `--background`             | `#f3edde` Off-White         |
+| Foreground       | `text-foreground` / `--foreground`           | `#161b6d` Blue (Deep Ocean) |
+| Foreground hover | `bg-foreground-hover` / `--foreground-hover` | `#1f2490` Deep Ocean hover  |
+| Accent           | `bg-primary` / `--primary`                   | `#a4d3f6` Light Blue        |
+| Accent muted     | `bg-primary-muted` / `--primary-muted`       | `#bfd5de` Light Blue Muted  |
+| Secondary text   | `text-muted` / `--muted`                     | `#5e638f` Blue Muted        |
+| Card surface     | `bg-card` / `--card`                         | `#ffffff` White             |
+| Label pill       | `bg-lime` / `--lime`                         | `#e8ff7d` Electric Lime     |
 
 Section color variants (blue, light blue, off-white, white backgrounds — see Figma "Color semantics") are per-section styling, not themes.
 
