@@ -1,0 +1,45 @@
+{
+  "format": "custom",
+  "id": "navigation",
+  "json": {
+    "Main": {
+      "links": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "Label",
+                "placeholder": "About Us"
+              },
+              "type": "Text"
+            },
+            "link": {
+              "config": {
+                "label": "Link"
+              },
+              "type": "Link"
+            },
+            "image": {
+              "config": {
+                "label": "Hover image"
+              },
+              "type": "Image"
+            }
+          },
+          "label": "Menu links"
+        },
+        "type": "Group"
+      },
+      "language_label": {
+        "config": {
+          "label": "Language button label",
+          "placeholder": "Eng"
+        },
+        "type": "Text"
+      }
+    }
+  },
+  "label": "Navigation",
+  "repeatable": false,
+  "status": true
+}

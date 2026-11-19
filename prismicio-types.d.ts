@@ -473,6 +473,84 @@ export type HomepageDocument<Lang extends string = string> =
   >
 
 /**
+ * Item in *Navigation → Menu links*
+ */
+export interface NavigationDocumentDataLinksItem {
+  /**
+   * Label field in *Navigation → Menu links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: About Us
+   * - **API ID Path**: navigation.links[].label
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label: prismic.KeyTextField
+
+  /**
+   * Link field in *Navigation → Menu links*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.links[].link
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>
+
+  /**
+   * Hover image field in *Navigation → Menu links*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.links[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>
+}
+
+/**
+ * Content for Navigation documents
+ */
+interface NavigationDocumentData {
+  /**
+   * Menu links field in *Navigation*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation.links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  links: prismic.GroupField<Simplify<NavigationDocumentDataLinksItem>>
+
+  /**
+   * Language button label field in *Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Eng
+   * - **API ID Path**: navigation.language_label
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  language_label: prismic.KeyTextField
+}
+
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<NavigationDocumentData>,
+    'navigation',
+    Lang
+  >
+
+/**
  * Content for News Article documents
  */
 interface NewsArticleDocumentData {
@@ -674,6 +752,7 @@ export type AllDocumentTypes =
   | CountryDocument
   | FooterDocument
   | HomepageDocument
+  | NavigationDocument
   | NewsArticleDocument
   | PageDocument
   | PartnerDocument
@@ -2212,6 +2291,9 @@ declare module '@prismicio/client' {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      NavigationDocument,
+      NavigationDocumentData,
+      NavigationDocumentDataLinksItem,
       NewsArticleDocument,
       NewsArticleDocumentData,
       PageDocument,
