@@ -270,3 +270,14 @@
     linear-gradient(22deg, rgb(0 0 0 / 50%) 8%, transparent 47%),
     rgb(0 0 0 / 20%);
 }
+
+/* Home preloader: the hero image shows through a circle that starts as a dot
+   and grows to fill the screen. GSAP animates the radius and the x / y offset. */
+@utility preloader-clip {
+  --clip-r: 0.78125rem;
+  --clip-x: 2.6875rem;
+  --clip-y: 0rem;
+  clip-path: circle(
+    var(--clip-r) at calc(50% + var(--clip-x)) calc(50% + var(--clip-y))
+  );
+}
