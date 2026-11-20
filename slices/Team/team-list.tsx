@@ -36,8 +36,9 @@ export function TeamList({
           <li key={member.id} className="relative flex items-start gap-2">
             <div
               className={cn(
-                'bg-card relative size-26.5 shrink-0 overflow-hidden transition-all duration-500 ease-out',
-                open ? 'rounded-3xl lg:size-85' : 'rounded-2xl',
+                'bg-card relative size-26.5 shrink-0 overflow-hidden transition-all',
+                // Below lg the open member's photo moves inside its card (Figma).
+                open ? 'rounded-3xl max-lg:hidden lg:size-85' : 'rounded-2xl',
               )}
             >
               <PrismicNextImage
@@ -51,37 +52,54 @@ export function TeamList({
 
             <div
               className={cn(
-                'bg-card flex min-h-26.5 min-w-0 flex-1 flex-col p-6 transition-all duration-500 ease-out',
+                'bg-card flex min-h-26.5 min-w-0 flex-1 flex-col p-6 transition-all',
                 open ? 'rounded-3xl lg:min-h-85' : 'rounded-2xl',
               )}
             >
-              <h3 className="font-display text-h5 md:text-h4">
-                <button
-                  type="button"
-                  aria-expanded={open}
-                  aria-controls={bioId}
-                  onClick={() => setOpenId(member.id)}
-                  className="text-left after:absolute after:inset-0 after:content-['']"
-                >
-                  {member.name}
-                </button>
-              </h3>
-              {member.role && (
-                <p className="text-caption mt-2 uppercase">{member.role}</p>
-              )}
+              <div className="flex items-start gap-2.5">
+                {open && (
+                  <div className="bg-background relative size-28 shrink-0 overflow-hidden rounded-2xl lg:hidden">
+                    <PrismicNextImage
+                      field={member.photo}
+                      fill
+                      fallbackAlt=""
+                      sizes="7rem"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <h3 className="font-display text-h4-sm md:text-h4">
+                    <button
+                      type="button"
+                      aria-expanded={open}
+                      aria-controls={bioId}
+                      onClick={() => setOpenId(member.id)}
+                      className="text-left after:absolute after:inset-0 after:content-['']"
+                    >
+                      {member.name}
+                    </button>
+                  </h3>
+                  {member.role && (
+                    <p className="text-caption mt-1 uppercase md:mt-2">
+                      {member.role}
+                    </p>
+                  )}
+                </div>
+              </div>
 
               <div
                 id={bioId}
                 inert={!open}
                 className={cn(
-                  'grid transition-all duration-500 ease-out',
+                  'grid transition-all',
                   open
                     ? 'rows-expanded opacity-100'
                     : 'rows-collapsed opacity-0',
                 )}
               >
                 <div className="text-body text-muted min-h-0 overflow-hidden">
-                  <div className="pt-12 md:pt-17">
+                  <div className="pt-8 lg:pt-17">
                     <PrismicRichText field={member.bio} />
                   </div>
                 </div>

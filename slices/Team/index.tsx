@@ -34,11 +34,13 @@ const Team = ({ slice }: TeamProps) => {
     >
       <div className="divider origin-top scale-y-50" />
       {primary.eyebrow && (
-        <p className="font-display text-shoulder mt-4">{primary.eyebrow}</p>
+        <p className="font-display text-shoulder-sm md:text-shoulder mt-4">
+          {primary.eyebrow}
+        </p>
       )}
 
-      <div className="grid-default mt-17 gap-y-12">
-        <div className="col-span-4 flex flex-col gap-9 md:col-span-5">
+      <div className="grid-default mt-6 gap-y-16 md:mt-17 md:gap-y-12">
+        <div className="col-span-4 flex flex-col gap-4 md:col-span-5 md:gap-9">
           <PrismicRichText
             field={primary.title}
             components={{
@@ -49,7 +51,7 @@ const Team = ({ slice }: TeamProps) => {
               ),
             }}
           />
-          <div className="text-h6 text-muted max-w-56">
+          <div className="text-body md:text-h6 text-muted max-w-56">
             <PrismicRichText field={primary.description} />
           </div>
         </div>

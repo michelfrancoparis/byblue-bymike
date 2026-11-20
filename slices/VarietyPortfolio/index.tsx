@@ -44,21 +44,25 @@ const VarietyPortfolio = ({ slice }: VarietyPortfolioProps) => {
       data-slice-variation={slice.variation}
       className="container py-18"
     >
-      <div className="grid-default gap-y-8">
-        <div className="font-display col-span-4 flex flex-col gap-12 md:col-span-6">
+      <div className="grid-default gap-y-5 md:gap-y-8">
+        <div className="font-display col-span-4 flex flex-col gap-7 md:col-span-6 md:gap-12">
           {primary.eyebrow && (
-            <p className="text-shoulder">{primary.eyebrow}</p>
+            <p className="text-shoulder-sm md:text-shoulder">
+              {primary.eyebrow}
+            </p>
           )}
           <PrismicRichText
             field={primary.title}
             components={{
               heading2: ({ children }) => (
-                <h2 className="text-h2-sm md:text-h2 max-w-126">{children}</h2>
+                <h2 className="text-h2-sm md:text-h2 max-w-71.5 md:max-w-126">
+                  {children}
+                </h2>
               ),
             }}
           />
         </div>
-        <div className="text-h6 text-muted col-span-4 flex max-w-146 flex-col gap-6 md:col-span-5 md:col-start-8 md:pt-14">
+        <div className="text-body md:text-h6 text-muted col-span-4 flex max-w-146 flex-col gap-6 md:col-span-5 md:col-start-8 md:pt-14">
           <PrismicRichText field={primary.description} />
         </div>
       </div>
@@ -71,11 +75,11 @@ const VarietyPortfolio = ({ slice }: VarietyPortfolioProps) => {
 
       {(isFilled.image(primary.partner_logo) ||
         isFilled.richText(primary.partner_text)) && (
-        <div className="bg-primary mt-4 flex flex-col items-center justify-center gap-5 rounded-4xl px-6 pt-4 pb-3 text-center sm:flex-row sm:text-left">
+        <div className="bg-primary mt-4 flex flex-col items-start gap-2 rounded-3xl px-6 pt-4 pb-6 md:flex-row md:items-center md:justify-center md:gap-5 md:rounded-4xl md:pb-3">
           {isFilled.image(primary.partner_logo) && (
             <PrismicNextImage
               field={primary.partner_logo}
-              className="h-11 w-auto"
+              className="h-8 w-auto md:h-11"
               sizes="10rem"
             />
           )}

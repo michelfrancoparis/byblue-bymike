@@ -18,10 +18,13 @@ export async function Footer() {
   const { data } = footer
 
   return (
-    <footer className="bg-primary text-foreground relative pt-9.5 pb-5">
+    <footer className="bg-primary text-foreground relative pt-9.5 pb-2.5 md:pb-5">
       <div className="container">
         <div className="grid-default gap-y-12">
-          <Column heading={data.contact_label} className="md:col-span-6">
+          <Column
+            heading={data.contact_label}
+            className="col-span-2 row-start-1 md:col-span-6"
+          >
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-2">
                 <PrismicRichText field={data.address} />
@@ -39,16 +42,17 @@ export async function Footer() {
             </div>
           </Column>
 
-          <Column heading={data.navigation_label} className="md:col-span-2">
-            <LinkList items={data.navigation} />
+          <Column heading={data.navigation_label} className="col-span-2">
+            {/* Mobile: the legal links join this list (Figma). */}
+            <LinkList items={data.navigation} mobileExtra={data.legal} />
           </Column>
 
-          <Column heading={data.social_label} className="md:col-span-2">
+          <Column heading={data.social_label} className="col-span-2">
             <LinkList items={data.social} />
           </Column>
 
-          <div className="col-span-4 hidden justify-end md:col-span-2 md:flex">
-            <LogoMark className="h-19 w-auto" />
+          <div className="col-span-2 col-start-3 row-start-1 flex justify-end md:col-start-auto md:row-start-auto">
+            <LogoMark className="h-14 w-auto md:h-19" />
           </div>
         </div>
 
@@ -56,16 +60,20 @@ export async function Footer() {
       </div>
 
       <div className="text-caption px-global grid-default absolute inset-x-0 bottom-2">
-        <p className="col-span-4 md:col-span-6">{data.copyright}</p>
+        <p className="col-span-3 md:col-span-6">{data.copyright}</p>
         {data.legal.map((item, index) => (
-          <MaybeLink key={index} field={item.link} className="col-span-2">
+          <MaybeLink
+            key={index}
+            field={item.link}
+            className="col-span-2 hidden md:block"
+          >
             {item.label}
           </MaybeLink>
         ))}
         {data.credit_label && (
           <MaybeLink
             field={data.credit_link}
-            className="col-span-4 md:col-span-2 md:text-right"
+            className="col-span-1 text-right md:col-span-2"
           >
             {data.credit_label}
           </MaybeLink>
@@ -92,15 +100,25 @@ function Column({
   )
 }
 
+type FooterLink = { label: KeyTextField; link: LinkField }
+
 function LinkList({
   items,
+  mobileExtra = [],
 }: {
-  items: { label: KeyTextField; link: LinkField }[]
+  items: FooterLink[]
+  /** Extra links shown in this list on mobile only. */
+  mobileExtra?: FooterLink[]
 }) {
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-3 md:gap-2">
       {items.map((item, index) => (
         <li key={index}>
+          <MaybeLink field={item.link}>{item.label}</MaybeLink>
+        </li>
+      ))}
+      {mobileExtra.map((item, index) => (
+        <li key={`extra-${index}`} className="md:hidden">
           <MaybeLink field={item.link}>{item.label}</MaybeLink>
         </li>
       ))}

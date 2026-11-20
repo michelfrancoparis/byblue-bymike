@@ -4,7 +4,10 @@ import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { MONTHS, type CalendarRow, type Program } from './months'
 
-/** Program tabs + country × month pill grid + legend. */
+/**
+ * Program tabs + country × month pill grid + legend. Mobile: the grid slides
+ * sideways (~3 months in view) with the country column pinned.
+ */
 export function CalendarTable({
   programs,
   activeLabel,
@@ -41,7 +44,7 @@ export function CalendarTable({
                 aria-selected={selected}
                 onClick={() => setCurrent(program)}
                 className={cn(
-                  'text-body flex items-center gap-2 rounded-full px-5 py-3.5 leading-none transition-colors',
+                  'text-body-sm md:text-body flex cursor-pointer items-center gap-1.5 rounded-full px-5 py-3.5 leading-none transition-colors md:gap-2',
                   selected ? 'bg-foreground text-card' : 'text-foreground',
                 )}
               >
@@ -55,11 +58,11 @@ export function CalendarTable({
         </div>
       )}
 
-      <div className="mt-8 scrollbar-none overflow-x-auto">
-        <table className="w-full min-w-200 table-fixed border-collapse">
+      <div className="relative mt-8 scrollbar-none overflow-x-auto">
+        <table className="w-full min-w-316 table-fixed border-collapse md:min-w-200">
           <thead>
             <tr className="border-primary-muted border-b">
-              <th className="w-30" />
+              <th className="bg-background sticky left-0 z-10 w-28 md:w-30" />
               {MONTHS.map((month) => (
                 <th
                   key={month}
@@ -76,7 +79,7 @@ export function CalendarTable({
               <tr key={row.name} className="border-primary-muted border-b">
                 <th
                   scope="row"
-                  className="text-body h-14.5 pr-4 text-left font-medium whitespace-nowrap"
+                  className="text-body bg-background sticky left-0 z-10 h-14.5 pr-4 text-left font-medium whitespace-nowrap"
                 >
                   {row.name}
                 </th>
@@ -103,7 +106,7 @@ export function CalendarTable({
         </table>
       </div>
 
-      <ul className="text-body mt-7 flex justify-end gap-8">
+      <ul className="text-body mt-7 flex gap-8 md:justify-end">
         {[
           { label: activeLabel, color: 'bg-primary' },
           { label: offSeasonLabel, color: 'bg-primary-muted' },

@@ -30,7 +30,7 @@ export function LocationsViewer({
   return (
     <div
       className={cn(
-        'bg-muted relative flex overflow-hidden rounded-4xl p-2 pt-48 md:min-h-140 md:pt-2',
+        'bg-muted relative flex overflow-hidden rounded-3xl p-2 pt-72 md:min-h-140 md:rounded-4xl md:pt-2',
         className,
       )}
     >
@@ -42,32 +42,37 @@ export function LocationsViewer({
           fallbackAlt=""
           sizes="100vw"
           className={cn(
-            'object-cover transition-opacity duration-500',
+            'object-cover transition-opacity',
             index === current ? 'opacity-100' : 'opacity-0',
           )}
         />
       ))}
 
-      <div className="location-glass text-card relative flex w-full flex-col gap-6 rounded-3xl p-2 md:w-116">
-        <div className="relative aspect-video overflow-hidden rounded-2xl md:aspect-auto md:flex-1">
+      <div className="location-glass text-card relative flex w-full flex-col gap-6 rounded-2xl p-3 md:w-116 md:rounded-3xl md:p-2">
+        <div className="relative aspect-4/3 w-31 overflow-hidden rounded-xl md:aspect-auto md:w-auto md:flex-1 md:rounded-2xl">
           {locations.map((item, index) => (
             <PrismicNextImage
               key={item.id}
               field={item.map}
               fill
               fallbackAlt=""
-              sizes="(min-width: 48em) 28rem, 100vw"
+              sizes="(min-width: 48em) 28rem, 8rem"
               className={cn(
-                'object-cover transition-opacity duration-500',
+                'object-cover transition-opacity',
                 index === current ? 'opacity-100' : 'opacity-0',
               )}
             />
           ))}
         </div>
 
-        <div className="flex flex-col gap-3 pl-2" aria-live="polite">
+        <div
+          className="flex flex-col gap-2 md:gap-3 md:pl-2"
+          aria-live="polite"
+        >
           {location.label && <p className="text-body-sm">{location.label}</p>}
-          <h3 className="font-display text-h2-sm">{location.name}</h3>
+          <h3 className="font-display text-h5-sm md:text-h3">
+            {location.name}
+          </h3>
           <div className="text-body opacity-60">
             <PrismicRichText field={location.address} />
           </div>
@@ -85,7 +90,7 @@ export function LocationsViewer({
                   aria-selected={selected}
                   onClick={() => setCurrent(index)}
                   className={cn(
-                    'text-body flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-3.5 leading-none transition-colors',
+                    'text-body-sm md:text-body flex flex-1 items-center justify-center gap-1.5 rounded-full px-3 py-3.5 leading-none transition-colors md:gap-2 md:px-5',
                     selected ? 'bg-card text-foreground' : 'hover:bg-card/10',
                   )}
                 >

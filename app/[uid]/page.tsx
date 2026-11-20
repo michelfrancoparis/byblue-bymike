@@ -1,8 +1,8 @@
-import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { SliceZone } from '@prismicio/react'
 import { createClient } from '@/prismicio'
 import { components } from '@/slices'
+import { SliceZone } from '@prismicio/react'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 // Inner pages (/farming, /about…) — one Prismic "Page" document each.
 export default async function Page({ params }: PageProps<'/[uid]'>) {

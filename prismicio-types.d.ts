@@ -1580,6 +1580,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   system_text: prismic.RichTextField
+
+  /**
+   * Intro text field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Shown when the visitor starts scrolling
+   * - **API ID Path**: hero.default.primary.intro_text
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  intro_text: prismic.RichTextField
 }
 
 /**

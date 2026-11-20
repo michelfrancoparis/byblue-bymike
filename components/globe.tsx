@@ -17,9 +17,11 @@ export type GlobeLocation = {
 const RADIUS = 1
 const SEGMENTS = 72
 const INITIAL_ROTATION_X = 0.5 // tilt north so Europe sits in view
+// Mobile (Figma): closer to the equator so South America and Africa show whole.
+const INITIAL_ROTATION_X_MOBILE = 0.2
 const INITIAL_ROTATION_Y = -0.95 // Atlantic facing the camera
 const CAMERA_Z = 1.65
-const CAMERA_Z_MOBILE = 3.5
+const CAMERA_Z_MOBILE = 3.2
 const MOBILE_MAX_WIDTH = 600
 const CLOUD_SPEED = 0.01 // radians per second
 // Extra margin past the visible horizon, so labels fade before touching the edge.
@@ -106,6 +108,7 @@ const scratchWorld = new THREE.Vector3()
 const scratchCamera = new THREE.Vector3()
 
 function Earth({ locations }: { locations: GlobeLocation[] }) {
+  const isMobile = useThree((state) => state.size.width) <= MOBILE_MAX_WIDTH
   const [dayMap, cloudMap] = useTexture(TEXTURES, ([day]) => {
     day.colorSpace = THREE.SRGBColorSpace // colour map; clouds stay linear
   })
@@ -146,7 +149,11 @@ function Earth({ locations }: { locations: GlobeLocation[] }) {
   return (
     <group
       ref={groupRef}
-      rotation={[INITIAL_ROTATION_X, INITIAL_ROTATION_Y, 0]}
+      rotation={[
+        isMobile ? INITIAL_ROTATION_X_MOBILE : INITIAL_ROTATION_X,
+        INITIAL_ROTATION_Y,
+        0,
+      ]}
     >
       <mesh>
         <sphereGeometry args={[RADIUS, SEGMENTS, SEGMENTS]} />
@@ -183,14 +190,14 @@ function Earth({ locations }: { locations: GlobeLocation[] }) {
               labelRefs.current[index] = element
             }}
             className={cn(
-              'absolute top-0 flex -translate-y-1/2 items-center gap-3 transition-opacity duration-300',
+              'absolute top-0 flex -translate-y-1/2 items-center gap-1.5 transition-opacity md:gap-3',
               marker.side === 'right'
-                ? 'left-0 -translate-x-2.5'
-                : 'right-0 translate-x-2.5 flex-row-reverse',
+                ? 'left-0 -translate-x-2 md:-translate-x-2.5'
+                : 'right-0 translate-x-2 flex-row-reverse md:translate-x-2.5',
             )}
           >
-            <span className="bg-card size-5 shrink-0 rounded-full" />
-            <span className="bg-card text-foreground text-body-sm rounded-full px-3.5 py-3 leading-none whitespace-nowrap">
+            <span className="bg-card size-4 shrink-0 rounded-full md:size-5" />
+            <span className="bg-card text-foreground text-caption md:text-body-sm rounded-full px-2 py-1.5 leading-none whitespace-nowrap md:px-3.5 md:py-3">
               {marker.name}
             </span>
           </div>

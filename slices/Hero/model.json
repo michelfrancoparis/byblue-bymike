@@ -81,6 +81,14 @@
             "multi": "paragraph"
           },
           "type": "StructuredText"
+        },
+        "intro_text": {
+          "config": {
+            "label": "Intro text",
+            "placeholder": "Shown when the visitor starts scrolling",
+            "single": "paragraph"
+          },
+          "type": "StructuredText"
         }
       },
       "version": "initial"

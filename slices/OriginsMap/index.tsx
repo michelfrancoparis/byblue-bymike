@@ -29,14 +29,16 @@ const OriginsMap = async ({ slice }: OriginsMapProps) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="container pt-4 pb-24"
+      className="container pt-20 pb-16 md:pt-4 md:pb-24"
     >
       <div className="divider origin-top scale-y-50" />
       {primary.eyebrow && (
-        <p className="font-display text-shoulder mt-4">{primary.eyebrow}</p>
+        <p className="font-display text-shoulder-sm md:text-shoulder mt-4">
+          {primary.eyebrow}
+        </p>
       )}
 
-      <div className="grid-default mt-14 gap-y-6">
+      <div className="grid-default mt-6 gap-y-3 md:mt-14 md:gap-y-6">
         <PrismicRichText
           field={primary.title}
           components={{
@@ -47,12 +49,12 @@ const OriginsMap = async ({ slice }: OriginsMapProps) => {
             ),
           }}
         />
-        <div className="text-body text-muted col-span-4 max-w-102 opacity-60 md:col-start-9 md:pt-7.5">
+        <div className="text-body text-muted col-span-4 max-w-102 md:col-start-9 md:pt-7.5 md:opacity-60">
           <PrismicRichText field={primary.description} />
         </div>
       </div>
 
-      <div className="bg-foreground mt-20 h-140 cursor-grab overflow-hidden rounded-4xl active:cursor-grabbing">
+      <div className="bg-foreground mt-16 h-140 cursor-grab overflow-hidden rounded-3xl active:cursor-grabbing md:mt-20 md:rounded-4xl">
         <Globe locations={locations} />
       </div>
     </section>

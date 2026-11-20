@@ -7,6 +7,7 @@ import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText } from '@prismicio/react'
 import gsap from 'gsap'
 import { cn } from '@/lib/utils'
+import { MOTION } from '@/lib/motion'
 
 gsap.registerPlugin(useGSAP)
 
@@ -70,8 +71,8 @@ export function TimelineCarousel({
 
         gsap[immediate ? 'set' : 'to'](track, {
           x: targetX,
-          duration: immediate ? 0 : 0.7,
-          ease: 'power3.inOut',
+          duration: immediate ? 0 : MOTION.duration,
+          ease: MOTION.ease,
           overwrite: 'auto',
         })
       })
@@ -139,7 +140,7 @@ export function TimelineCarousel({
                       field={milestone.title}
                       components={{
                         heading3: ({ children }) => (
-                          <h3 className="font-display text-h5 before:bg-lime flex items-center gap-2 before:size-3 before:shrink-0 before:rounded-full before:content-['']">
+                          <h3 className="font-display text-h5-sm md:text-h5 before:bg-lime flex items-center gap-2 before:size-3 before:shrink-0 before:rounded-full before:content-['']">
                             {children}
                           </h3>
                         ),
